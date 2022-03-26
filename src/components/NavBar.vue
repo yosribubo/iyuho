@@ -69,6 +69,6 @@
     }
 </script>
 
-<style>
-  @import url('../assets/css/user_index.css');
+<style lang="scss" scoped>
+  @import '../assets/css/user_index.css';
 </style>

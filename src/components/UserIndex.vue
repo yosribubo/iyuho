@@ -1,5 +1,3 @@
-/* eslint-disable vue/require-v-for-key */
-/* eslint-disable vue/require-v-for-key */
 <template>
   <nav-bar></nav-bar>
   <div id='user'>
@@ -189,7 +187,7 @@
 <script>
 
 import NavBar from "./NavBar.vue";
-import h from 'vue';
+import {h} from 'vue';
 // TODO
 // import { Swiper, SwiperSlide } from 'swiper';
 
@@ -274,6 +272,7 @@ export default {
 };
 </script>
 
-<style scoped>
-  @import url('../assets/css/user_index.css');
+<style>
+  @import '../assets/css/user_index.css';
+  @import '../assets/css/styles.css';
 </style>
