@@ -1051,6 +1051,7 @@ nav section{
   left: 52%;
   background-color: #faac7e;
   z-index: 2;
+  padding: 12px 22px;
 }
 
 #button-13 .checkbox:checked + .knobs span {
@@ -1061,3 +1062,45 @@ nav section{
 #button-13 .checkbox:checked ~ .layer-role {
   background-color: #fcebeb;
 }
+
+.iyuhotooltiop {
+    position: relative;
+    /* display: inline-block; */
+    border-bottom: 1px dotted black;
+    }
+
+    .iyuhotooltiop .iyuhotooltioptext {
+        visibility: hidden;
+        max-width: 100%;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        /* border-radius: 6px; */
+        padding: 5px 10px;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        margin-left: -2px;
+        margin-bottom: -35px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12px;
+
+        /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .iyuhotooltiop .iyuhotooltioptext::after {
+        content: " ";
+        position: absolute;
+        bottom: 100%;  /* At the top of the tooltip */
+        left: 0;
+        margin-left: 2px;
+        border-left-width: 10px;
+        border-right-width: 0;
+        /* border-top-width: 14px; */
+        border-bottom-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent black transparent;
+    }
