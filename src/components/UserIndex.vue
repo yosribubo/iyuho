@@ -1,7 +1,7 @@
 <template>
   <header>
       <section>
-          <svg id="support" width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+          <svg id="support" width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" data-bs-toggle="modal" data-bs-target="#myModal">
               <path d="M16 7.184C16 3.14 12.86 0 9 0S2 3.14 2 7c-1.163.597-2 1.696-2 3v2a3 3 0 0 0 3 3h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1 5 5 0 0 1 10 0 1 1 0 0 0-1 1v6a1 1 0 0 0 1 1v1h-2.592c-.206-.581-.756-1-1.408-1H8a1.5 1.5 0 0 0 0 3h6a2 2 0 0 0 2-2v-1.183A2.992 2.992 0 0 0 18 12v-2a2.99 2.99 0 0 0-2-2.816L-7 62" fill="#fff" fill-rule="evenodd"/>
           </svg>
           <p>iYuho</p>
@@ -183,7 +183,7 @@
         </section>
     </main>
     <!-- TODO -->
-    <section id="popup-banner" class="modal-container">  
+    <!-- <section id="popup-banner" class="modal-container">  
         <div class="modal-dialog">    
             <svg class="modal-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <defs>
@@ -202,22 +202,37 @@
                 </div>
             </div>            
         </div>
-    </section>
+    </section> -->
   </div>
+  <!-- <section id="popup-banner" class=""> -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <h2>Customer Support</h2>
+        <img v-bind:src="qrcode" />
+      </div>
+    </div>
+  </div>
+  <!-- </section> -->
 </template>
 
 <script>
 
+  import axios from 'axios'
   import NavBar from "./NavBar.vue";
   import {h} from 'vue';
+  import QRCode from "qrcode";
 
   export default {
     data: function() {
       return {
+          isOpen: true,
           gas_amuont: 0,
           days_total: "--",
           days_left: "--",
           days_percent: 0,
+          qrcode: '',
           msg: [],
           heart_flag: true,
           news: [
@@ -255,11 +270,43 @@
         };
     },
 
+    mounted() {
+      const plugin1 = document.createElement("script");
+      plugin1.setAttribute(
+        "src",
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      );
+      plugin1.async = true;
+      document.head.appendChild(plugin1);
+
+      const plugin2 = document.createElement("script");
+      plugin2.setAttribute(
+        "src",
+        "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"
+      );
+      plugin2.async = true;
+      document.head.appendChild(plugin2);
+
+      const plugin3 = document.createElement("script");
+      plugin3.setAttribute(
+        "src",
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      );
+      plugin3.async = true;
+      document.head.appendChild(plugin3);
+
+      QRCode.toDataURL("https://linktr.ee/iyuho")
+          .then((url) => {
+            this.qrcode = url;
+          })
+          .catch((err) => console.log(err));
+    },
+
     created() {
-      fetch("https://app.iyuho.net/Api/home")
+      axios.get("https://app.iyuho.net/Api/home")
         .then(async response => {
-          const data = await response.json();
-          console.log(data);
+          const data = await response.data;
+          console.log(response);
           // check for error response
           if (!response.ok) {
             // get error message from body or default to response statusText
@@ -281,10 +328,10 @@
           console.error("Request: " + error);
         });
 
-        fetch("https://app.iyuho.net/Api/userWallet")
+        axios.get("http://app.iyuho.net/Api/userWallet")
         .then(async response => {
-          const data = await response.json();
-          console.log(data);
+          const data = await response.data;
+          console.log(response);
           // check for error response
           if (!response.ok) {
             // get error message from body or default to response statusText
@@ -304,10 +351,10 @@
           console.error("Request: " + error);
         });
 
-        fetch("https://app.iyuho.net/Api/rsstojson/")
+        axios.get("http://app.iyuho.net/Api/rsstojson/")
         .then(async response => {
-          const data = await response.json();
-          console.log(data);
+          const data = await response.data;
+          console.log(response);
           // check for error response
           if (!response.ok) {
             // get error message from body or default to response statusText
@@ -350,9 +397,16 @@
       };
     },
 
-    methods: {    
-      createModal: function (container) {
-            return container
+    methods: {
+      showmodal: function() {
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+                width: 160,
+                height: 160
+            });
+
+        qrcode.makeCode('https://linktr.ee/iyuho');
+        var modal = this.createModal(document.querySelector("#popup-banner"));
+        modal.open();
       },
 
       createPoint:  function (x, y) {
@@ -364,8 +418,9 @@
       },
 
       onLogout: function() {
-        window.location.href = "/logout";
+        window.location.href = "/";
       },
+      
     },
 
     computed: {
@@ -383,11 +438,9 @@
   </script>
 
 <style>
-  @import '../assets/css/user_index.css';
-  @import'~bootstrap/dist/css/bootstrap.css';
+  @import '~bootstrap/dist/css/bootstrap.css';
   @import '../assets/css/styles.css';
+  @import '../assets/css/user_index.css';
 
-  .carousel-inner {
-    margin: 10px 0;
-  }
+   
 </style>

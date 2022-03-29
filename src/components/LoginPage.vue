@@ -13,13 +13,12 @@
                 <input type="email" id="email" name="email" 
                     placeholder="user@example.com" 
                     v-model="email" 
-                    @blur = "validateEmail"
                     v-on:click="closetip"
                     required />
             </div>
             <div  id="div_mobile" :class="{'active':flag == 2, 'inactive':flag == 1}">
                 <label for="mobile">Mobile</label>
-                <input type="tel" id="mobile" name="mobile" v-on:click="closetip" required>
+                <input type="tel" id="mobile" name="mobile" class="mobile" v-model="mobile" v-on:click="closetip" required>
                 <!-- <vue-tel-input :value="phone" mode="international"></vue-tel-input> -->               
             </div>
             <span id="emailtip" class="iyuhotooltioptext">{{emailErrMsg}}</span>
@@ -32,23 +31,25 @@
             <input type="password" id="password" name="password" minlength="6" 
                 placeholder="******"
                 v-model="password"
-                @blur="validatePassword"
                 v-on:click="closetip"
                 required />                
             <span id="passwordtip" class="iyuhotooltioptext">{{passwordErrMsg}}</span>
         </section>
-        <section class="login-field login-captcha">
+        <section class="login-field login-captcha iyuhotooltiop">
             <div>
                 <label for="verify">Captcha</label>
                 <input type="text" id="verify" autocomplete="off" 
                     placeholder='--'
                     v-model="verify"
                     required>
-                    <span v-if="msg.verify">{{ msg.verify }}</span>
+            <span id="verifytip" class="iyuhotooltioptext">{{verifyErrMsg}}</span>
             </div>
-            <!-- <img style="width:30%;margin-right: 10px;border-radius:10px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 50%);" src="{:captcha_src()}" alt="load failed" id="captcha" onclick="javascript:this.src='{:captcha_src()}?rand='+Math.random()"> -->
+            <img style="width:30%;margin-right: 10px;border-radius:10px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 50%);" src="Http://app.iyuho.net/captcha.html" alt="load failed" id="captcha">
             
-        </section>           
+        </section> 
+        <section class="login-forgot">
+            <a class="coming_soon" href="#">Forgot Password?</a>
+        </section>       
         <section class="login-button" v-on:click="onSubmit">
             <p>Login</p>
         </section>
@@ -56,9 +57,11 @@
     <!-- <RouterView /> -->
 </template>
 
-<script>
+<script lang="js">
 
-    import axios from 'axios'
+    import Axios from 'axios';
+    // import $ from 'jquery';
+    import intlTelInput from "../assets/build/js/intlTelInput.js";
 
     export default {
         data() {
@@ -66,16 +69,38 @@
                 email   : '',
                 password: '',
                 verify  : '',
-                msg     : [],
+                mobile  : '',
+                country_code : '',
                 flag    : 1,
                 emailErrMsg : '',
-                passwordErrMsg : ''
+                passwordErrMsg : '',
+                verifyErrMsg: '',
+                mobileErrMsg: '',
                 // phone   : ''
             }
         },
 
-        mounted() {
+        mounted(){
+            var input = document.querySelector("#mobile");
             
+            // eslint-disable-next-line no-unused-vars
+            const iti = intlTelInput(input, {
+                placeholderNumberType: "MOBILE",
+                preferredCountries: ['my'],
+                separateDialCode: true,
+                utilsScript: "../asssets/build/js/utils.js",
+            });
+
+            // alert(this.mobile);
+
+            // $(".login-button").click(function(){
+            //         var country_code = iti.selectedCountryData.dialCode();
+            //         alert(country_code)
+            //         //this.onSubmit();
+            //     }
+            // );
+
+
         },
 
         components: {
@@ -103,7 +128,7 @@
             validateEmail() {
                 let el = document.getElementById('emailtip');              
                 if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-                        this.msg['email'] = '';
+                        this.emailErrMsg = '';
                         this.closetip(el);
                         return true;
                 } else {
@@ -115,27 +140,25 @@
 
             validatePassword() {
                 let el = document.getElementById('passwordtip');
-                if( this.password === '' ) {
+                if( this.password == '' ) {
                     this.passwordErrMsg = 'Please enter a password';
                     this.showtip(el);
-                    return false
-                } else if ( this.password.length < 8 ) {
-                    this.passwordErrMsg = 'Password length must be minium 8 chracters';
-                    this.showtip(el);
-                    return false
+                    return false;
                 } else {
-                    this.msg['password'] = '';
+                    this.passwordErrMsg = '';
                     this.closetip(el);
-                    return true;
+                    return false;
                 }
-
             },
 
             validateVerify() {
+                let el = document.getElementById('verifytip');
                 if (this.verify === '') {
-                    this.msg['verify'] = 'Place enter a CAPTCHA Code';
+                    this.verifyErrMsg = 'Place enter a CAPTCHA Code';
+                    this.showtip(el);
                 } else {
-                    this.msg['verify'] = '';
+                    this.verifyErrMsg= '';
+                    this.closetip(el);
                 }
             }, 
             
@@ -177,7 +200,6 @@
                 
                 var form;
                 if(this.flag == 1){
-                    console.log('submitting...');
                     if (this.email == "" || this.email == null) {
                         this.emailErrMsg = 'Please enter email address';
                         let el = document.getElementById('emailtip');
@@ -190,14 +212,27 @@
                         this.showtip(el);
                         return false;
                     }
-                    // form = {email: this.email, password: this.password,verify:verify};
-                    form = {email: this.email, password: this.password};
+                    form = {email: this.email, password: this.password, verify:this.verify};
                 } else {
-                    return;
+                    // eslint-disable-next-line no-undef
+                    var country_code = iti.selectedCountryData.dialCode();
+                    // alert(country_code);
+
+                    if (this.mobile == "" || this.mobile == null || this.mobile.length<8) {
+                        this.emailErrMsg = 'Please enter mobile number';
+                        let el = document.getElementById('emailtip');
+                        this.showtip(el);
+                        return false;
+                    }
+                    if (country_code == "" || country_code == null) {
+                        this.emailErrMsg = 'Please select country code';
+                        this.trans_lock = 0;
+                        return false;
+                    }
+                    // TODO : country_code validate
+                    form = {mobile: this.mobile, country_code: country_code, password: this.password, email: this.eamil};
                 }
 
-                console.log('verifying...');
-                
                 if ((this.email == "" || this.email == null) && (this.mobile == "" || this.mobile == null)) {
                      this.emailErrMsg = 'Please enter email address';
                     let el = document.getElementById('emailtip');
@@ -210,24 +245,78 @@
                     let el = document.getElementById('passwordtip');
                     this.showtip(el);
                     return false;
-                } 
+                }
+                if (this.verify == "" || this.verify == null) {
+                    this.verifyErrMsg = 'Place enter a CAPTCHA Code';
+                    let el = document.getElementById('verifytip');
+                    this.showtip(el);
+                    return false;
+                }
 
-                console.log('axiosing...');
-
-                axios.post('https://app.iyuho.net/Login/uplogin', form)
-                    .then( response => console.log(response) )
+                // const requestOptions = {
+                //     method: "POST",
+                //     headers: { "Content-Type": "application/json" },
+                //     body: JSON.stringify(form)
+                // };
+                
+                Axios({
+                        method:'put',
+                        url:'http://app.iyuho.net/Login/uplogin',
+                        data: form,
+                        headers:{
+                            'Access-Control-Allow-Origin' : '*',
+                            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                            'Content-Type':'text/json'
+                        }
+                    }) 
+                    .then( response => {
+                        const data = response.data;
+                        console.log(data);
+                        if (data.status == 1) {
+                            // TODO: success message
+                            window.location.href = "/User/index";
+                        } else {
+                            // TODO: error message
+                            if (data.url) {
+                                this.verify = '';
+                                window.location.href = data.url;
+                            }
+                        }
+                    })
                     .catch(error => {
-                        console.error('Post Request Error: ', error);
+                        console.log(error);
                     }); 
                 
+                
+                
+               /*
+                    $.post("http://app.iyuho.net/Login/uplogin", form, function(data) {
+                            console.log('-----------------');
+                            console.log(data);
+                            this.trans_lock = 0;
+                            if (data.status == 1) {
+                                console.log('-----------------');
+                                console.log(data);
+                            } else {
+                                // $("#verify").val('');
+                                // $("#captcha").click();
+                                // layer.msg(data.info, { icon: 2 });
+                                // if (data.url) {
+                                //     window.location.href = data.url;
+                                // }
+                            }
+                        }, "json");
+                        */
             }
+            
         }
     }
 </script>
 
-<style>
-    @import '../assets/css/styles.css';
+<style lang="css" scoped>
 
+    @import '../assets/build/css/intlTelInput.css';
+    @import '../assets/css/styles.css';
     .active {
         display: block;
     }

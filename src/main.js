@@ -9,6 +9,9 @@ import UserIndex from './components/UserIndex';
 import MyApi from './components/MyApi';
 import MyEarning from './components/Earning';
 import LoginPage from './components/LoginPage';
+import MyTeam from './components/MyTeam';
+import MyLock from './components/MyLock';
+import Register from './components/Register';
 
 import 'bootstrap'
 
@@ -19,6 +22,10 @@ const routes = [
   { path: '/user/index', component: UserIndex, title: "IYUHO"},
   { path: '/user/myapi', component: MyApi, title: "IYUHO"},
   { path: '/user/earning', component: MyEarning, title: "IYUHO"},
+  { path: '/user/myteam', component: MyTeam, title: "IYUHO"},
+  { path: '/user/mylock', component: MyLock, title: "IYUHO"},
+  { path: '/user/myteam', component: MyTeam, title: "IYUHO"},
+  { path: '/user/Register', component: Register, title: "IYUHO"},
 ]
 
 const router = createRouter({
