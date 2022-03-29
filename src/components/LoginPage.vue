@@ -44,7 +44,7 @@
                     required>
             <span id="verifytip" class="iyuhotooltioptext">{{verifyErrMsg}}</span>
             </div>
-            <img style="width:30%;margin-right: 10px;border-radius:10px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 50%);" src="Http://app.iyuho.net/captcha.html" alt="load failed" id="captcha">
+            <img style="width:30%;margin-right: 10px;border-radius:10px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 50%);" src="Http://app.iyuho.net/captcha.html" alt="load failed" id="captcha" onclick="javascript:this.src='Http://app.iyuho.net/captcha.html?rand='+Math.random()">
             
         </section> 
         <section class="login-forgot">
@@ -54,13 +54,11 @@
             <p>Login</p>
         </section>
     </main>
-    <!-- <RouterView /> -->
 </template>
 
 <script lang="js">
 
     import Axios from 'axios';
-    // import $ from 'jquery';
     import intlTelInput from "../assets/build/js/intlTelInput.js";
 
     export default {
@@ -90,16 +88,6 @@
                 separateDialCode: true,
                 utilsScript: "../asssets/build/js/utils.js",
             });
-
-            // alert(this.mobile);
-
-            // $(".login-button").click(function(){
-            //         var country_code = iti.selectedCountryData.dialCode();
-            //         alert(country_code)
-            //         //this.onSubmit();
-            //     }
-            // );
-
 
         },
 
@@ -274,7 +262,7 @@
                         console.log(data);
                         if (data.status == 1) {
                             // TODO: success message
-                            window.location.href = "/User/index";
+                             window.location.href = "/User/index";
                         } else {
                             // TODO: error message
                             if (data.url) {
@@ -286,27 +274,6 @@
                     .catch(error => {
                         console.log(error);
                     }); 
-                
-                
-                
-               /*
-                    $.post("http://app.iyuho.net/Login/uplogin", form, function(data) {
-                            console.log('-----------------');
-                            console.log(data);
-                            this.trans_lock = 0;
-                            if (data.status == 1) {
-                                console.log('-----------------');
-                                console.log(data);
-                            } else {
-                                // $("#verify").val('');
-                                // $("#captcha").click();
-                                // layer.msg(data.info, { icon: 2 });
-                                // if (data.url) {
-                                //     window.location.href = data.url;
-                                // }
-                            }
-                        }, "json");
-                        */
             }
             
         }
