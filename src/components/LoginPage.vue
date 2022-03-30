@@ -58,6 +58,8 @@
 
 <script lang="js">
 
+    // import Toasted from 'vue-toasted';
+
     import Axios from 'axios';
     import intlTelInput from "../assets/build/js/intlTelInput.js";
 
@@ -185,6 +187,8 @@
             },
 
             onSubmit: function() {
+
+                // Toasted.show('onsubmit');
                 
                 var form;
                 if(this.flag == 1){
