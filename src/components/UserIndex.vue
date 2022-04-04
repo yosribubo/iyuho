@@ -1,72 +1,52 @@
+/* eslint-disable vue/require-v-for-key */
+/* eslint-disable vue/require-v-for-key */
 <template>
-  <header>
-      <section>
-          <svg id="support" width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" data-bs-toggle="modal" data-bs-target="#myModal">
-              <path d="M16 7.184C16 3.14 12.86 0 9 0S2 3.14 2 7c-1.163.597-2 1.696-2 3v2a3 3 0 0 0 3 3h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1 5 5 0 0 1 10 0 1 1 0 0 0-1 1v6a1 1 0 0 0 1 1v1h-2.592c-.206-.581-.756-1-1.408-1H8a1.5 1.5 0 0 0 0 3h6a2 2 0 0 0 2-2v-1.183A2.992 2.992 0 0 0 18 12v-2a2.99 2.99 0 0 0-2-2.816L-7 62" fill="#fff" fill-rule="evenodd"/>
-          </svg>
-          <p>iYuho</p>
-          <svg id="logout" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="18" height="18" viewBox="0 0 256 256" xml:space="preserve" v-on:click="onLogout">
-              <g transform="translate(128 128) scale(1.21 1.21)" style="">
-                  <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-104.85 -104.85000000000001) scale(2.33 2.33)" >
-                    <path d="M 69.313 54.442 c -0.397 0 -0.798 -0.118 -1.147 -0.363 c -0.904 -0.636 -1.122 -1.883 -0.487 -2.786 l 10.118 -14.399 L 67.679 22.495 c -0.635 -0.904 -0.417 -2.151 0.487 -2.786 c 0.904 -0.637 2.151 -0.417 2.786 0.486 l 10.926 15.549 c 0.484 0.69 0.484 1.61 0 2.3 L 70.952 53.592 C 70.563 54.146 69.943 54.442 69.313 54.442 z" 
-                          style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" 
-                          transform=" matrix(1 0 0 1 0 0) " 
-                          stroke-linecap="round" />
-                    <path d="M 57.693 30.092 c 1.104 0 2 -0.896 2 -2 V 2 c 0 -1.104 -0.896 -2 -2 -2 H 9.759 C 9.746 0 9.735 0.003 9.722 0.004 C 9.685 0.004 9.648 0.012 9.611 0.015 c -0.122 0.009 -0.24 0.027 -0.354 0.057 C 9.211 0.083 9.168 0.098 9.124 0.113 C 9.011 0.151 8.903 0.198 8.8 0.255 C 8.775 0.269 8.747 0.274 8.723 0.289 c -0.012 0.007 -0.02 0.018 -0.031 0.025 c -0.13 0.083 -0.252 0.177 -0.36 0.287 C 8.313 0.62 8.299 0.643 8.281 0.662 C 8.196 0.757 8.12 0.859 8.053 0.969 C 8.029 1.009 8.008 1.05 7.987 1.091 C 7.935 1.192 7.893 1.297 7.858 1.407 C 7.845 1.449 7.83 1.489 7.82 1.532 C 7.783 1.683 7.759 1.838 7.759 2 v 69.787 c 0 0.17 0.028 0.333 0.068 0.49 c 0.011 0.043 0.025 0.083 0.039 0.124 c 0.04 0.123 0.091 0.239 0.152 0.35 c 0.019 0.033 0.034 0.068 0.054 0.1 c 0.086 0.135 0.185 0.26 0.3 0.371 c 0.022 0.021 0.047 0.037 0.07 0.058 c 0.102 0.09 0.214 0.169 0.333 0.237 c 0.021 0.012 0.037 0.03 0.058 0.042 l 31.016 16.213 C 40.139 89.925 40.457 90 40.775 90 c 0.359 0 0.718 -0.097 1.036 -0.289 c 0.598 -0.362 0.964 -1.012 0.964 -1.711 V 73.787 h 14.918 c 1.104 0 2 -0.896 2 -2 V 45 c 0 -1.104 -0.896 -2 -2 -2 s -2 0.896 -2 2 v 24.787 H 42.775 V 18.213 c 0 -0.745 -0.414 -1.428 -1.074 -1.772 L 17.902 4 h 37.791 v 24.092 C 55.693 29.196 56.589 30.092 57.693 30.092 z" 
-                          style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" 
-                          transform=" matrix(1 0 0 1 0 0) " 
-                          stroke-linecap="round" />
-                    <path d="M 80.241 38.894 H 47.536 c -1.104 0 -2 -0.896 -2 -2 s 0.896 -2 2 -2 h 32.705 c 1.104 0 2 0.896 2 2 S 81.346 38.894 80.241 38.894 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                  </g>
-              </g>
-          </svg>
-      </section>
-  </header>
-  <nav-bar activeflag="home"></nav-bar>
+  <nav-bar></nav-bar>
   <div id='user'>
     <div class="popup-banner">
             <iframe id="iframe_news" src=""></iframe>
     </div>
     <div class="black-screen"></div>
     <main class="top bottom">
-        <div id="banner" class="carousel slide" data-bs-ride="carousel">
-
-          <!-- Indicators/dots -->
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#banner" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#banner" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#banner" data-bs-slide-to="3"></button>
+        <div class="home-slider">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="card-image">
+                  <img src="@/assets/img/banner22.png">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="card-image">
+                  <img src="@/assets/img/iyuhop2.png" alt="Image Slider">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="card-image">
+                  <img src="@/assets/img/iyuhop3.png" alt="Image Slider">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="card-image">
+                  <img src="@/assets/img/iyuhop1.png">
+                </div>
+              </div>
+              
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Scrollbar -->
+            <div class="swiper-button-next">
+              <i class="fas fa-chevron-circle-right arrow-icon"></i>
+            </div>
+            <div class="swiper-button-prev">
+              <i class="fas fa-chevron-circle-left arrow-icon"></i>
+            </div>
           </div>
-          
-          <!-- The slideshow/carousel -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="@/assets/img/banner22.png" alt="Los Angeles" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-              <img src="@/assets/img/iyuhop2.png" alt="Chicago" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-              <img src="@/assets/img/iyuhop3.png" alt="New York" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-              <img src="@/assets/img/iyuhop1.png" alt="New York" class="d-block" style="width:100%">
-            </div>
-          </div>
-          
-          <!-- Left and right controls/icons -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
         </div>
-
         <section class="home-box">
             <div id="deposit_url">
-                <img src="../assets/img/deposit4.png"  width="40.001" height="40">
+                <img src="/Public/iyuho/img/deposit4.png" width="35%" >
                 <p>My Wallet</p>
             </div>
             <div id="transfer_url">
@@ -154,21 +134,21 @@
         <section class="home-bar">
             <div class="home-bar-title">
                 <p>Activate Days</p>
-                <p><span id="days_left">{{days_left}}</span> Days/<span id="days_total">{{days_total}}</span></p>
+                <p><span id="days_left">--</span> Days/<span id="days_total">--</span></p>
             </div>
-            <div class="home-bar-line"><div id="days_percent" style="width: 0%;">{{days_percent}}%</div></div>
+            <div class="home-bar-line"><div id="days_percent" style="width: 0%;"></div></div>
         </section>
         <section class="help-search-answers">
             <p>Crypto News</p>
         </section>
-        <section class="help-questions"  v-if="heart_flag">
+        <section class="help-questions">
             <div class="heart-loading">
-              <div class="lds-heart">
+              <div class="lds-heart" v-if="heart-flag">
                 <div></div>
               </div>
             </div>
         </section>
-        <section class="help-questions" v-else>
+        <section class="help-questions">
             <div v-for="n of news" class="row" :key="n.id">
               <div class='user-news-grid'>
                 <div>
@@ -183,7 +163,7 @@
         </section>
     </main>
     <!-- TODO -->
-    <!-- <section id="popup-banner" class="modal-container">  
+    <section id="popup-banner" class="modal-container">  
         <div class="modal-dialog">    
             <svg class="modal-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <defs>
@@ -202,245 +182,98 @@
                 </div>
             </div>            
         </div>
-    </section> -->
+    </section>
   </div>
-  <!-- <section id="popup-banner" class=""> -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <h2>Customer Support</h2>
-        <img v-bind:src="qrcode" />
-      </div>
-    </div>
-  </div>
-  <!-- </section> -->
 </template>
 
 <script>
 
-  import axios from 'axios'
-  import NavBar from "./NavBar.vue";
-  import {h} from 'vue';
-  import QRCode from "qrcode";
+import NavBar from "./NavBar.vue";
+import h from 'vue';
+// TODO
+// import { Swiper, SwiperSlide } from 'swiper';
 
-  export default {
-    data: function() {
-      return {
-          isOpen: true,
-          gas_amuont: 0,
-          days_total: "--",
-          days_left: "--",
-          days_percent: 0,
-          qrcode: '',
-          msg: [],
-          heart_flag: true,
-          news: [
-            {
-              id: 0,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 1,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 2,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 3,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 4,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-          ]
-        };
-    },
-
-    mounted() {
-      const plugin1 = document.createElement("script");
-      plugin1.setAttribute(
-        "src",
-        "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-      );
-      plugin1.async = true;
-      document.head.appendChild(plugin1);
-
-      const plugin2 = document.createElement("script");
-      plugin2.setAttribute(
-        "src",
-        "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"
-      );
-      plugin2.async = true;
-      document.head.appendChild(plugin2);
-
-      const plugin3 = document.createElement("script");
-      plugin3.setAttribute(
-        "src",
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      );
-      plugin3.async = true;
-      document.head.appendChild(plugin3);
-
-      QRCode.toDataURL("https://linktr.ee/iyuho")
-          .then((url) => {
-            this.qrcode = url;
-          })
-          .catch((err) => console.log(err));
-    },
-
-    created() {
-      axios.get("https://app.iyuho.net/Api/home")
-        .then(async response => {
-          const data = await response.data;
-          console.log(response);
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-          if (data.code == 1) {
-            var arr = data.data;
-            if (parseInt(arr.days_total) && parseInt(arr.days.days_left)) {
-              this.days_total = arr.days_total;
-              this.days_left = arr.days_left;
-              this.days_percent = (arr.days_left/arr.days_total * 100).toFixed(2);
-              document.getElementById('days_percent').animate({ width: this.days_percent + '%' }, 1500);
-            }
-          }
-        })
-        .catch(error => {
-          // this.errorMessage = error;
-          console.error("Request: " + error);
-        });
-
-        axios.get("http://app.iyuho.net/Api/userWallet")
-        .then(async response => {
-          const data = await response.data;
-          console.log(response);
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-          if (data.code == 1) {
-            var arr = data.data;
-            if(parseInt(arr.gas)){
-                var gas_percent = Number(arr.gas).toFixed(2);
-                this.gas_amount = gas_percent;
-            }
-          }
-        })
-        .catch(error => {
-          // this.errorMessage = error;
-          console.error("Request: " + error);
-        });
-
-        axios.get("http://app.iyuho.net/Api/rsstojson/")
-        .then(async response => {
-          const data = await response.data;
-          console.log(response);
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-          if (data.code == 1) {
-            this.heart_flag = false;
-            var list = data.data;
-            for (let index = 0; index < list.length; index++) {
-              const element = list[index];
-              data.id = element.id;
-              data.img_scr = element.img_src;
-              data.date = element.date;
-              data.title = element.title;
-              this.news[index] = data;
-            }
-          }
-        })
-        .catch(error => {
-          // this.errorMessage = error;
-          console.error("Request: " + error);
-        });
-    },
-
-    components: {
-      NavBar,
-    },
-
-    setup() {
-      const onSwiper = (swiper) => {
-        console.log(swiper);
+export default {
+  data: function() {
+    return {
+        gas_amuont: 19,
+        msg: [],
+        heart_flag: true,
+        news: [
+          {
+            id: 0,
+            img_src: 'news.jpg',
+            date: 'Fir,25 Mar 2022 12:17:36',
+            title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
+          },
+          {
+            id: 1,
+            img_src: 'news.jpg',
+            date: 'Fir,25 Mar 2022 12:17:36',
+            title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
+          },
+          {
+            id: 2,
+            img_src: 'news.jpg',
+            date: 'Fir,25 Mar 2022 12:17:36',
+            title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
+          },
+          {
+            id: 3,
+            img_src: 'news.jpg',
+            date: 'Fir,25 Mar 2022 12:17:36',
+            title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
+          },
+          {
+            id: 4,
+            img_src: 'news.jpg',
+            date: 'Fir,25 Mar 2022 12:17:36',
+            title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
+          },
+        ]
       };
-      const onSlideChange = () => {
-        console.log('slide change');
-      };
-      return {
-        onSwiper,
-        onSlideChange,
-      };
+},
+  components: {
+    NavBar,
+  },
+  setup() {
+    const onSwiper = (swiper) => {
+      console.log(swiper);
+    };
+    const onSlideChange = () => {
+      console.log('slide change');
+    };
+    return {
+      onSwiper,
+      onSlideChange,
+    };
+  },
+  methods: {    
+    createModal: function (container) {
+          return container
     },
 
-    methods: {
-      showmodal: function() {
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
-                width: 160,
-                height: 160
-            });
-
-        qrcode.makeCode('https://linktr.ee/iyuho');
-        var modal = this.createModal(document.querySelector("#popup-banner"));
-        modal.open();
-      },
-
-      createPoint:  function (x, y) {
-        var point;
-        // var point = polygon.points.appendItem(svg.createSVGPoint());
-        point.x = x || 0;
-        point.y = y || 0;
-        return point;
-      },
-
-      onLogout: function() {
-        window.location.href = "/";
-      },
-      
-    },
-
-    computed: {
-
-    },
-
-    render() {
-      return h('#user', { onClick: () => {
-        alert('click');
-        document.getElementsByClassName('popup-banner').hide();
-        document.getElementsByClassName('black-screen').hide(300, 'swing');
-      } })
+    createPoint:  function (x, y) {
+      var point;
+      // var point = polygon.points.appendItem(svg.createSVGPoint());
+      point.x = x || 0;
+      point.y = y || 0;
+      return point;
     }
-  };
-  </script>
+  },
+  computed: {
 
-<style>
-  @import '~bootstrap/dist/css/bootstrap.css';
-  @import '../assets/css/styles.css';
-  @import '../assets/css/user_index.css';
+  },
+  render() {
+    return h('#user', { onClick: () => {
+      alert('click');
+      document.getElementsByClassName('popup-banner').hide();
+      document.getElementsByClassName('black-screen').hide(300, 'swing');
+    } })
+  }
+};
+</script>
 
-   
+<style scoped>
+  @import url('../assets/css/user_index.css');
 </style>
