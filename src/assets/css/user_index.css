@@ -1,79 +1,41 @@
-.swiper-container .swiper-wrapper .swiper-slide .card-image img {
-    display: block;
+
+  .carousel-inner {
+    margin: 10px 0;
+  }
+
+  .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 110px;
+
+    width: 80%;
+    max-width: 270px;
+    height: 270px; 
     position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-}
-.swiper-container .swiper-pagination-bullet {
-    opacity: 0.8;
-    background: #252a32;
-}
-.swiper-container .swiper-pagination-bullet-active {
-    background: #fff;
-}
-.swiper-container .swiper-button-next, .swiper-container .swiper-button-prev {
-    background-image: none;
-    background-size: 0;
-    background-repeat: no-repeat;
-    background-position: 0;
-    margin-top: -1rem;
-}
-.swiper-container .swiper-button-next .arrow-icon, .swiper-container .swiper-button-prev .arrow-icon {
-    font-size: 2rem;
-    color: #fff;
-}
+    overflow: hidden;
+    box-shadow: -50px 0 200px -50px #504bff, 50px 0 200px -50px #4cfa63;
+    border-radius: 20px;
+  }
 
-.modal-container {
- display: flex;
- align-items: center;
- justify-content: center;
- position: fixed;
- top: 0;
- left: 0;
- z-index: 102;
- width: 100%;
- height: 100vh;
- overflow: hidden;
- background: rgba(0,0,0,0.8);  
- opacity: 0;
- visibility: hidden;
-}
+  .modal-dialog .modal-content {
+    background-color: rgba(0,0,0,0.8); 
+    color: white;
+    padding: 10px;
+  }
 
-.modal-dialog {
- width: 80%;
- max-width:414px;
- height: 310px;  
- position: relative;
- overflow: hidden;
- box-shadow: -50px 0 200px -50px #504bff, 50px 0 200px -50px #4cfa63;
- border-radius: 20px;
-}
+  .modal-dialog .modal-content img {
+    width: 160px;
+    height: 160px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 5px;
+  }
 
-.modal-svg {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
-}
-
-.modal-polygon {
- fill: url(#MyGradient);
-}
-
-.modal-content {
- position: relative;
- top: 0;
- left: 0;
- padding: 24px;  
- visibility: hidden;
- opacity: 0;  
- color: rgba(255,255,255,0.87);
-}
+  .modal-dialog .modal-content h2 {
+    font-size: 20px;
+    padding: 10px 5px;
+    text-align: center;
+  }
 
 @font-face {
            font-family: 'ProductSansMedium';

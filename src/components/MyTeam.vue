@@ -125,6 +125,11 @@
     import axios from 'axios';
     import $ from 'jquery';
 
+    const headers = {
+                    // 'Access-Control-Allow-Origin' : '*',
+                    // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    'Content-Type':'application/json'
+                };
     export default {
         data: function () {
             return {
@@ -145,13 +150,18 @@
             $("#dropdown-content").click(function (){
                 $('.dropdown-content').toggle();
             });
-            // TODO: api/myteam
-            axios.get("http://app.iyuho.net/Api/home")
+                // TODO: api/myteam
+                
+                axios({
+                    method:'GET',
+                    url:'http://test.ait.capital/api/index/Api/myteam',
+                    withCredentials: true,
+                    headers: headers
+                })
                 .then(async response => {
                     const data = response;
-                    console.log(data);
                     // check for error response
-                    if (!response.ok) {
+                    if (response.status != 200) {
                         // get error message from body or default to response statusText
                         const error = (data && data.message) || response.statusText;
                         return Promise.reject(error);
@@ -196,6 +206,8 @@
                             team_list.forEach(this.build_list);
                         });
                         this.furthest_b(this.current);
+                    } else {
+                        this.onLogout();
                     }
                 })
                 .catch(error => {
@@ -212,17 +224,23 @@
                 if (id == "" || id == null) {
                     return false;
                 }
-
-                axios.post("http://app.iyuho.net/Api/getFurthest",{id: id})
+                    axios({
+                        method:'POST',
+                        url:'http://test.ait.capital/api/index/Api/getFurthest',
+                        data: {id:id},
+                        withCredentials: true,
+                        // headers: headers
+                    })
                     .then(async response => {
                             const data = response;
-                            console.log(data);
                             // check for error response
-                            if (!response.ok) {
+                            if (response.ok != 200) {
                                 // get error message from body or default to response statusText
                                 const error = (data && data.message) || response.statusText;
                                 return Promise.reject(error);
-                            } else if (data.code == 1) {
+                            } 
+
+                            if (data.code == 1) {
                                 var arr = data.data;
                                 if(arr.left>0){
                                     $("#furthest_left").css('opacity','1');
@@ -238,6 +256,8 @@
                                     $("#furthest_right").css('opacity','0.2');
                                     $('#furthest_right').prop('onclick', null);
                                 }
+                            } else {
+                                this.onLogout();
                             }
                     })
                     .catch((err) => console.log(err));
@@ -252,9 +272,20 @@
                     return false;
                 }
                 $( ".list_loader" ).show(100);
-                axios.post("http://app.iyuho.net/Api/upmyteam", {id: id})
+                    axios({
+                        method:'POST',
+                        url:'http://test.ait.capital/api/index/Api/upmyteam',
+                        data: {id:id},
+                        withCredentials: true,
+                        // headers: headers
+                    })
                     .then(async response => {
                         const data = response;
+                        if (response.ok != 200) {
+                            // get error message from body or default to response statusText
+                            const error = (data && data.message) || response.statusText;
+                            return Promise.reject(error);
+                        }
                         if (data.code == 1) {
                             this.furthest_b(id);
                             $( ".list_loader" ).hide(100);
@@ -265,7 +296,9 @@
                             $("#team_list").html('');
                             arr.forEach(this.build_list);
                             
-                        }else{
+                        } else if (data.code == 0) {
+                            this.onLogout();
+                        } else{
                             $( ".list_loader" ).hide(100);
                         }
                     })
@@ -277,9 +310,20 @@
                     return false;
                 }
                 $( ".list_loader" ).show(100);
-                axios.post("http://app.iyuho.net/Api/upmyteam", {id: id})
+                    axios({
+                        method:'POST',
+                        url:'http://test.ait.capital/api/index/Api/upmyteam',
+                        data: {id:id},
+                        withCredentials: true,
+                        // headers: headers
+                    })
                     .then(async response => {
                         const data = response;
+                        if (response.ok != 200) {
+                            // get error message from body or default to response statusText
+                            const error = (data && data.message) || response.statusText;
+                            return Promise.reject(error);
+                        }
                         if (data.code == 1) {
                             this.furthest_b(id);
                             $( ".list_loader" ).hide(100);
@@ -290,7 +334,9 @@
                             $("#team_list").html('');
                             arr.forEach(this.build_list);
                             
-                        }else{
+                        } else if (data.code == 0) {
+                            this.onLogout();
+                        } else{
                             $( ".list_loader" ).hide(100);
                         }
                     })
@@ -324,6 +370,7 @@
             },
 
             activate_account: function(id) {
+                // TODO: router-link
                 window.location.hrfef = "/User.register?invit="+id;
             },
 
@@ -349,12 +396,18 @@
             },
 
             goDirect_Drop: function() {
+                // TODO: routter-link
                 window.location.href = "/User/mydirect";
             },
 
             goBack: function() {
+                // TODO: routter-link
                 window.location.href = "/User/index"
-            }
+            },
+
+            onLogout: function() {
+                window.location.href = "/";
+            },
         }
     }
 </script>

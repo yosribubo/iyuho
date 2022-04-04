@@ -127,6 +127,10 @@
                 $('.dropdown-content').toggle();
             },
 
+            onLogout: function() {
+                window.location.href = "/";
+            },
+
             lock_list: function(ctypes) {
                  if(ctypes == this.types){
                     console.log(this.types);
@@ -135,42 +139,60 @@
                 }
                 this.types = ctypes;
 
-                axios.get('http://app.iyuho.net/Api/mylock', {type:ctypes})
+                var headers = {
+                    // 'Access-Control-Allow-Origin' : '*',
+                    // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    'Content-Type':'application/json'
+                }
+
+                axios({
+                        method:'GET',
+                        url:'http://test.ait.capital/api/index/Api/mylock',
+                        data: {type: ctypes},
+                        withCredentials: true,
+                        headers: headers
+                    }) 
                     .then((res) => {
                         const data = res;
+                        if (res.status != 200) {
+                            // TODO: show error message
+                            return false;
+                        }
                         if(data.code == 1){
-                        $('#lock_list').fadeOut(100, function() { 
-                            $(this).html('');
-                            $(this).fadeIn();
-                            var arr = data.data;
-                            var status_color;
-                            var img;
-                            // var name;
-                            $.each(arr.list, function (i, item) {
-                                if(item.amount>=0){
-                                    status_color = '<span style="color: #49E052;">+ ';
-                                }else{
-                                    status_color = '<span>- ';
-                                }
-                                
-                                if(item.type == 1){
-                                    img = this.gas_img;
-                                }else if(item.type == 2){
-                                    img = this.nft_img;
-                                }else if(item.type == 4){
-                                    img = this.pin_img;
-                                }else{
-                                    img = this.usdt_img;
-                                }
+                            $('#lock_list').fadeOut(100, function() { 
+                                $(this).html('');
+                                $(this).fadeIn();
+                                var arr = data.data;
+                                var status_color;
+                                var img;
+                                // var name;
+                                $.each(arr.list, function (i, item) {
+                                    if(item.amount>=0){
+                                        status_color = '<span style="color: #49E052;">+ ';
+                                    }else{
+                                        status_color = '<span>- ';
+                                    }
+                                    
+                                    if(item.type == 1){
+                                        img = this.gas_img;
+                                    }else if(item.type == 2){
+                                        img = this.nft_img;
+                                    }else if(item.type == 4){
+                                        img = this.pin_img;
+                                    }else{
+                                        img = this.usdt_img;
+                                    }
 
-                                var build = '<section class="list-field"><div class="list-field-div"><section class="list-subfield">'+img+'<div><section><p>'+ item.currency+'</p><span>' + item.datetime +'</span></section></div></section><section class="list-subfieldbottom"><div style="padding-top: 3px;"><p>Remark</p><p>'+ item.description +'</p></div><div><p>Amount</p>' + status_color + Math.abs(item.amount) +' '+item.currency +'</span></div></section></div></section>';
+                                    var build = '<section class="list-field"><div class="list-field-div"><section class="list-subfield">'+img+'<div><section><p>'+ item.currency+'</p><span>' + item.datetime +'</span></section></div></section><section class="list-subfieldbottom"><div style="padding-top: 3px;"><p>Remark</p><p>'+ item.description +'</p></div><div><p>Amount</p>' + status_color + Math.abs(item.amount) +' '+item.currency +'</span></div></section></div></section>';
+                                    
+                                    $('#lock_list').append(build);
+                                });
                                 
-                                $('#lock_list').append(build);
+                                $('.lock-list-page').html(arr.page);
                             });
-                            
-                            $('.lock-list-page').html(arr.page);
-                        });
-                    }
+                        } else {
+                            this.onLogout();
+                        }
                     })
                     .catch((err) => {
                         console.log(err);

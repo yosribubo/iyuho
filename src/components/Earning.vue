@@ -181,7 +181,16 @@
 </template>
 
 <script>
+
+import $ from 'jquery'
+import Axios from 'axios'
 import NavBar from "./NavBar.vue"
+
+var headers = {
+        // 'Access-Control-Allow-Origin' : '*',
+        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Content-Type':'application/json'
+      };
 
 export default {
     components: {
@@ -190,15 +199,213 @@ export default {
     
     created() {
 
-        // TODO: get-api: https://app.iyuho.net/Api/userWallet 
+        // TODO: get-api: http://test.ait.capital/api/index/Api/userWallet 
+		Axios({
+              method:'GET',
+              url:'http://test.ait.capital/api/index/Api/userWallet',
+              withCredentials: true,
+              headers: headers
+          }) 
+        .then(response => {
+          const data = response.data;
+          // check for error response
+          if (response.status != 200) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          if (data.code == 1) {
+            var arr = data.data;
+            console.log(arr);
+			$("#available_bal").text((Math.floor(arr.usdt * 100)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+			$("#small_bal").text(parseFloat(Math.floor(arr.gas * 100)/100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+          } else {
+            //this.onLogout();
+          }
+        })
+        .catch(error => {
+          // this.errorMessage = error;
+          console.error("Request: " + error);
+        });
 
-        // TODO: get-api: https://app.iyuho.net/Api/referal_report
+        // TODO: get-api: http://test.ait.capital/api/index/Api/referal_report
+		Axios({
+              method:'GET',
+              url:'http://test.ait.capital/api/index/Api/referal_report',
+              withCredentials: true,
+              headers: headers
+          }) 
+        .then(response => {
+          const data = response.data;
+          // check for error response
+          if (response.status != 200) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          if (data.code == 1) {
+            var arr = data.data;
+            console.log(arr);
+			$("#referral_bonus").text(arr.referral_bonus);
+			$("#nft_earning").text(arr.nft_earning);
+			$("#pairing_bonus").text(arr.pairing_bonus);
+			if(arr.pairing_bonus>0){
+				$("#Polygon_6_u").show();
+			}else if(arr.pairing_bonus<0){
+				$("#Polygon_6_d").show();
+			}
+			$("#matching_bonus").text(arr.matching_bonus);
+			if(arr.matching_bonus>0){
+				$("#Polygon_7_u").show();
+			}else if(arr.matching_bonus<0){
+				$("#Polygon_7_d").show();
+			}
+			$("#direct_bonus").text(arr.direct_bonus);
+			if(arr.direct_bonus>0){
+				$("#Polygon_8_u").show();
+			}else if(arr.direct_bonus<0){
+				$("#Polygon_8_d").show();
+			}
+          } else {
+            //this.onLogout();
+          }
+        })
+        .catch(error => {
+          // this.errorMessage = error;
+          console.error("Request: " + error);
+        });
 
-        // TODO: get-api: https://app.iyuho.net/Api/win_rate
+        // TODO: get-api: http://test.ait.capital/api/index/Api/win_rate
+		Axios({
+              method:'GET',
+              url:'http://test.ait.capital/api/index/Api/win_rate',
+              withCredentials: true,
+              headers: headers
+          }) 
+        .then(response => {
+          const data = response.data;
+          // check for error response
+          if (response.status != 200) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          if (data.code == 1) {
+            var arr = data.data;
+            console.log(arr);
+			$("#win_rate").text(arr.win_rate);
+			if(arr.win_rate>0){
+				$("#Polygon_1_u").show();
+			}else if(arr.win_rate<0){
+				$("#Polygon_1_d").show();
+			}
+          } else {
+            //this.onLogout();
+          }
+        })
+        .catch(error => {
+          // this.errorMessage = error;
+          console.error("Request: " + error);
+        });
 
-        // TODO: get-api: https://app.iyuho.net/Api/profit_report
+        // TODO: get-api: http://test.ait.capital/api/index/Api/profit_report
+		Axios({
+              method:'GET',
+              url:'http://test.ait.capital/api/index/Api/profit_report',
+              withCredentials: true,
+              headers: headers
+          }) 
+        .then(response => {
+          const data = response.data;
+          // check for error response
+          if (response.status != 200) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          if (data.code == 1) {
+            var arr = data.data;
+            console.log(arr);
+			$("#total_profit").text(arr.total_profit);
+			$("#total_profit_percentage").text(arr.total_profit_percentage);
+			if(arr.total_profit_percentage>0){
+				$("#Polygon_2_u").show();
+			}else if(arr.total_profit_percentage<0){
+				$("#Polygon_2_d").show();
+			}
+			$("#today_profit").text(arr.today_profit);
+			if(arr.today_profit>0){
+				$("#Polygon_3_u").show();
+			}else if(arr.today_profit<0){
+				$("#Polygon_3_d").show();
+			}
+			$("#week_profit").text(arr.week_profit);
+			if(arr.week_profit>0){
+				$("#Polygon_4_u").show();
+			}else if(arr.week_profit<0){
+				$("#Polygon_4_d").show();
+			}
+			$("#month_profit").text(arr.month_profit);
+			if(arr.month_profit>0){
+				$("#Polygon_5_u").show();
+			}else if(arr.month_profit<0){
+				$("#Polygon_5_d").show();
+			}
+          } else {
+            //this.onLogout();
+          }
+        })
+        .catch(error => {
+          // this.errorMessage = error;
+          console.error("Request: " + error);
+        });
 
-        // TODO: get-api: https://app.iyuho.net/Api/mycj
+        // TODO: get-api: http://test.ait.capital/api/index/Api/mycj
+		Axios({
+              method:'GET',
+              url:'http://test.ait.capital/api/index/Api/mycj',
+              withCredentials: true,
+              headers: headers
+          })
+        .then(response => {
+          const data = response.data;
+          // check for error response
+          if (response.status != 200) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          if (data.code == 1) {
+            var arr = data.data;
+            console.log(arr);
+			$('#cj_transaction').fadeOut(100, function() { 
+				$(this).html('');
+				$(this).fadeIn();
+				$.each(arr.list, function (i, item) {
+					var status_color = '<span style="color: #696969;">--';
+					
+					if(item.sold_price !== 0){
+						if(item.earning>=0){
+							status_color = '<span style="color: #49E052;">+'+"$" + Math.abs(item.earning).toLocaleString("en-US");
+						}else{
+							status_color = '<span style="color: #ff4d54;">-'+"$" + Math.abs(item.earning).toLocaleString("en-US");
+						}
+					}
+					
+					var build = '<div class="trading-field-div"><section class="trading-subfield"><img src="'+item.img+'" alt=""><div><section><p>'+ item.symbol+'</p><span>'+ status_color +'</span> (USDT)</span></section><section><p style="color: #CECECE; font-size: 10px;font-weight:bold;">'+ item.t_type+'</p><p style="color: #CECECE;font-size: 10px;font-weight:bold;">'+ item.datetime +'</p></section></div></section></div>';
+					
+					$('#cj_transaction').append(build);
+				});
+				$('.cj-list-page').html(arr.page);
+			});
+          } else {
+            //this.onLogout();
+          }
+        })
+        .catch(error => {
+          // this.errorMessage = error;
+          console.error("Request: " + error);
+        });
     },
 }
 </script>

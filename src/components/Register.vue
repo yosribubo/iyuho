@@ -100,9 +100,9 @@
 
 <script lang="js">
 
-    import $ from 'jquery';
     import Axios from "axios";
     import intlTelInput from "../assets/build/js/intlTelInput.js";
+    import {$,jQuery} from 'jquery';
 
 
 export default {
@@ -126,7 +126,7 @@ export default {
         
         var input = document.querySelector("#mobile");
         // eslint-disable-next-line no-unused-vars
-        var iti = intlTelInput(input, {
+        const iti = intlTelInput(input, {
             placeholderNumberType: "MOBILE",
             preferredCountries: ['my'],
             separateDialCode: true,
@@ -142,9 +142,9 @@ export default {
                     url:'http://app.iyuho.net/Api/invit',
                     data: {invit:invit_data},
                     headers:{
-                        'Access-Control-Allow-Origin' : '*',
-                        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                        'Content-Type':'text/json'
+                        // 'Access-Control-Allow-Origin' : '*',
+                        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Content-Type':'application/json'
                     }
                 })
                 .then((res) => {
@@ -162,9 +162,9 @@ export default {
                     url:'http://app.iyuho.net/Api/invit',
                     data: {direct:direct_data},
                     headers:{
-                        'Access-Control-Allow-Origin' : '*',
-                        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                        'Content-Type':'text/json'
+                        // 'Access-Control-Allow-Origin' : '*',
+                        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Content-Type':'application/json'
                     }
                 })
                 .then((res) => {
@@ -353,17 +353,17 @@ export default {
 
             Axios({
                 method:'post',
-                url:'http://app.iyuho.net/Api/upregister',
+                url:'http://test.ait.capital/api/index/Api/upregister',
                 data: form,
-                headers:{
-                    'Access-Control-Allow-Origin' : '*',
-                    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                    'Content-Type':'text/json'
-                }
+                // headers:{
+                //     'Access-Control-Allow-Origin' : '*',
+                //     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                //     'Content-Type':'application/json'
+                // }
             }) 
             .then( response => {
                 console.log(response);
-                if (response.status == 1) {
+                if (response.status == 200) {
                     // TODO: success message
                     window.location.href = "/User/index";
                 } else {

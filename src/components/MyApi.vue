@@ -77,7 +77,7 @@
 
         data: function() {
             return {
-                apiReq: 'https://app.iyuho.net/Api/myapi',
+                apiReq: 'http://test.ait.capital/api/index/Api/myapi',
                 apikey: null,
                 password: null,
                 secret: null,
@@ -146,6 +146,34 @@
                 
             },
 
+            onLogout: function() {
+                window.location.href = "/";
+            },
+
+            showMessage: function (content, type=0) {                
+                var alert_type = 'alert-success';
+                var alert_content = '';
+                if (type == 0) {
+                    alert_type = 'alert-success';
+                    alert_content = '<strong>Success! </strong>' + content;
+                }                    
+                if (type == 1) {
+                    alert_type = 'alert-warning';
+                    alert_content = '<strong>Warning! </strong>' + content;
+                }
+                if (type == 2) {
+                    alert_type = 'alert-danger';
+                    alert_content = '<strong>Danger! </strong>' + content;
+                }
+                    
+                var html = '<div class="alert ';
+                html += alert_type; 
+                html += ' alert-dismissible fade show"> <button type="button" class="btn-close" data-bs-dismiss="alert" onclick="javascript:this.style.opacity=0;"></button>';
+                html += alert_content;
+                html + ' </div>';
+                document.getElementById('message').innerHTML = html;
+            },
+
             onSubmit: function () {
                 // TODO: form login action
 
@@ -167,31 +195,79 @@
                     return false;
                 }
 
-                // TODO: ajax request
+                // TODO: ajax 
+                axios({
+                    method:'PUT',
+                    url:'http://test.ait.capital/api/index/Api/upmyapi',
+                    data: {
+                            apikey:this.apikey,
+                            secret:this.secret,
+                            amount:this.trade_amount,
+                            trade_type:this.trade_type, 
+                            password:this.password
+                    },
+                    withCredentials: true,
+                }) 
+                .then( response => {
+                    const data = response.data;
+                    this.trans_lock = 0;
+                    // check for error response
+                    if (response.status != 200) {
+                        // get error message from body or default to response statusText
+                        const error = (data && data.message) || response.statusText;
+                        return Promise.reject(error);
+                    }
+                    if (data.code == 1) {
+                        // TODO show message data.info
+                        this.showMessage(data.msg);
+                        location.reload();
+                    } else {
+                        this.onLogout();
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                }); 
             }
         },
 
         mounted() {
+                axios({
+                    method:'GET',
+                    url:this.apiReq,
+                    withCredentials: true,
+                    headers:{
+                        // 'Access-Control-Allow-Origin' : '*',
+                        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then((res) => {
+                    console.log(res);
+                    var data = res.data;
 
-            axios.get(this.apiReq)
-                .then((data) => {
-                    console.log(data)
-                    // if (data.code == 1) {
-                    //     let info = data.data;
-                    //     this.apikey = info.apikey;
-                    //     this.secret = info.secret;
-                    //     this.trade = info.trade;
-                    //     this.min_amount = info.min_amount;
+                    if (res.status != 200) {
+                        // TODO: show error message
+                        return false;
+                    }
+                    if (data.code == 1) {
+                        let info = data.data;
+                        this.apikey = info.apikey;
+                        this.secret = info.secret;
+                        this.trade = info.trade;
+                        this.min_amount = info.min_amount;
 
-                    //     this.onHide();
+                        this.onHide();
 
-                    //     if (this.trade_type == 1) {
-                    //         document.getElementById("trade_type").prop('checked', true);
-                    //     }
-                    // } else {
-                    //     document.querySelector("#apikey_section,#secret_section").css('opacity', '0.6');
-                    //     this.onShow();
-                    // }
+                        if (this.trade_type == 1) {
+                            document.getElementById("trade_type").prop('checked', true);
+                        }
+                    } else if (data.code == 0){
+                        this.onLogout();
+                    } else {
+                        document.querySelector("#apikey_section,#secret_section").css('opacity', '0.6');
+                        this.onShow();
+                    }
                 });
         }
     }
