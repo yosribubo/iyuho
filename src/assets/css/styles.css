@@ -233,6 +233,7 @@ nav section{
     margin:0 !important;
     padding:10px 10px;
     box-shadow: 0px 1px 2px 0px #E2E2E2;
+    padding-left: 40px;
 }
 .pagination li{
     margin:5px 5px;
@@ -467,6 +468,7 @@ nav section{
     overflow: hidden;
     font-family: 'Outfit-Regular';
     color: #ffffff;
+    margin-bottom: 0;
 }
 .list-subfieldbottom div span{
     font-size: 13px;

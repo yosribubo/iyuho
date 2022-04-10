@@ -38,14 +38,14 @@
 							</g>
 						</g>
 						<text transform="translate(24 129)" fill="#a56c0d" font-size="28" font-family="Outfit-Medium, Outfit" font-weight="500">
-							<tspan x="0" y="0">$<tspan id='available_bal'>--</tspan></tspan>
+							<tspan x="0" y="0">$<tspan id='available_bal'>{{available_bal}}</tspan></tspan>
 						</text>
 						<text transform="translate(188 129)" fill="#fff" font-size="12" font-family="Outfit-Medium, Outfit" font-weight="500">
-							<tspan x="0" y="0">GAS $<tspan id='small_bal'>--</tspan></tspan>
+							<tspan x="0" y="0">GAS $<tspan id='small_bal'>{{small_bal}}</tspan></tspan>
 						</text>
 						<g id="Group_395" data-name="Group 395" transform="translate(108)">
 							<text id="USDT" transform="translate(206 88)" fill="#fff" font-size="8" font-family="Outfit-Medium, Outfit" font-weight="500">
-								<tspan x="0" y="0">--</tspan>
+								<tspan x="0" y="0">{{usdt}}</tspan>
 							</text>
 							<rect id="Rectangle_29" data-name="Rectangle 29" width="12" height="12" rx="3" transform="translate(192 79)" fill="#fff"/>
 							<path id="eye" d="M5.819,4.585A3.439,3.439,0,0,0,4.487,3.351a1.528,1.528,0,0,1,.213.787,1.508,1.508,0,0,1-.46,1.107,1.51,1.51,0,0,1-1.107.46,1.508,1.508,0,0,1-1.107-.46,1.509,1.509,0,0,1-.46-1.107,1.528,1.528,0,0,1,.213-.787A3.437,3.437,0,0,0,.448,4.585,3.61,3.61,0,0,0,1.614,5.727a2.929,2.929,0,0,0,3.039,0A3.61,3.61,0,0,0,5.819,4.585ZM3.3,3.243a.167.167,0,0,0-.168-.168A1.069,1.069,0,0,0,2.07,4.138a.168.168,0,1,0,.336,0,.728.728,0,0,1,.727-.727A.167.167,0,0,0,3.3,3.243ZM6.266,4.585a.484.484,0,0,1-.07.241A3.71,3.71,0,0,1,4.88,6.115a3.387,3.387,0,0,1-3.493,0A3.731,3.731,0,0,1,.07,4.827a.451.451,0,0,1,0-.483A3.736,3.736,0,0,1,1.387,3.057a3.381,3.381,0,0,1,3.493,0A3.73,3.73,0,0,1,6.2,4.344.484.484,0,0,1,6.266,4.585Z" transform="translate(194.867 80.643)" fill="#deae5e"/>
@@ -54,7 +54,7 @@
 						<line id="Line_1" data-name="Line 1" x2="323" transform="translate(26.5 149.5)" fill="none" stroke="#a56c0d" stroke-width="0.25"/>
 						<g id="Total_Profit" data-name="Total Profit">
 							<text transform="translate(24 199)" fill="#8b5b0a" font-size="15" font-family="Outfit-Medium, Outfit" font-weight="500">
-								<tspan x="0" y="0">$<tspan id="nft_earning">--</tspan></tspan>
+								<tspan x="0" y="0">$<tspan id="nft_earning">{{ nft_earning }}</tspan></tspan>
 							</text>
 							<text id="Total_Profit-2" data-name="Total Profit" transform="translate(24 175)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
 								<tspan x="0" y="0">Nft Earning</tspan>
@@ -62,7 +62,7 @@
 						</g>
 						<g id="Total_Profit-3" data-name="Total Profit">
 							<text id="_3138.53" data-name="$3138.53" transform="translate(145 199)" fill="#8b5b0a" font-size="15" font-family="Outfit-Medium, Outfit" font-weight="500">
-								<tspan x="0" y="0">$<tspan id="total_profit">--</tspan></tspan>
+								<tspan x="0" y="0">$<tspan id="total_profit">{{total_profit}}</tspan></tspan>
 							</text>
 							<text id="Total_Profit-4" data-name="Total Profit" transform="translate(145 175)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
 								<tspan x="0" y="0">Total Profit</tspan>
@@ -70,7 +70,7 @@
 						</g>
 						<g id="Referral_Bonus" data-name="Referral Bonus">
 							<text id="_192.84" data-name="$192.84" transform="translate(258 199)" fill="#8b5b0a" font-size="15" font-family="Outfit-Medium, Outfit" font-weight="500">
-								<tspan x="0" y="0">$<tspan id="referral_bonus">--</tspan></tspan>
+								<tspan x="0" y="0">$<tspan id="referral_bonus">{{ referral_bonus }}</tspan></tspan>
 							</text>
 							<text id="Referral_Bonus-2" data-name="Referral Bonus" transform="translate(258 175)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
 								<tspan x="0" y="0">Referral Bonus</tspan>
@@ -110,28 +110,28 @@
 							<tspan x="0" y="0">Direct Sponsor</tspan>
 						</text>
 						<text transform="translate(340 254)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-37.464" y="0"><tspan id='win_rate'>--</tspan>%</tspan>
+							<tspan x="-37.464" y="0"><tspan id='win_rate'>{{ win_rate }}</tspan>%</tspan>
 						</text>
 						<text transform="translate(343 296)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-40.98" y="0"><tspan id='total_profit_percentage'>--</tspan>%</tspan>
+							<tspan x="-40.98" y="0"><tspan id='total_profit_percentage'>{{ total_profit_percentage }}</tspan>%</tspan>
 						</text>
 						<text transform="translate(345 338)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-43.536" y="0">$<tspan id='today_profit'>--</tspan></tspan>
+							<tspan x="-43.536" y="0">$<tspan id='today_profit'>{{ today_profit }}</tspan></tspan>
 						</text>
 						<text transform="translate(350 380)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-48.528" y="0">$<tspan id='week_profit'>--</tspan></tspan>
+							<tspan x="-48.528" y="0">$<tspan id='week_profit'>{{ week_profit }}</tspan></tspan>
 						</text>
 						<text transform="translate(348 422)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-46.32" y="0">$<tspan id='month_profit'>--</tspan></tspan>
+							<tspan x="-46.32" y="0">$<tspan id='month_profit'>{{ month_profit }}</tspan></tspan>
 						</text>
 						<text transform="translate(342 464)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-40.332" y="0">$<tspan id='pairing_bonus'>--</tspan></tspan>
+							<tspan x="-40.332" y="0">$<tspan id='pairing_bonus'>{{pairing_bonus}}</tspan></tspan>
 						</text>
 						<text transform="translate(335 506)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-33.504" y="0">$<tspan id='matching_bonus'>--</tspan></tspan>
+							<tspan x="-33.504" y="0">$<tspan id='matching_bonus'>{{ matching_bonus }}</tspan></tspan>
 						</text>
 						<text transform="translate(343 548)" fill="#fff" font-size="12" font-family="Outfit-Regular, Outfit">
-							<tspan x="-40.896" y="0">$<tspan id='direct_bonus'>--</tspan></tspan>
+							<tspan x="-40.896" y="0">$<tspan id='direct_bonus'>{{ direct_bonus }}</tspan></tspan>
 						</text>
 						<line id="Line_2" data-name="Line 2" x2="351" transform="translate(12.5 270.5)" fill="none" stroke="#5b5b5b" stroke-width="0.25"/>
 						<line id="Line_3" data-name="Line 3" x2="351" transform="translate(12.5 312.5)" fill="none" stroke="#5b5b5b" stroke-width="0.25"/>
@@ -142,23 +142,23 @@
 						<line id="Line_8" data-name="Line 8" x2="351" transform="translate(12.5 522.5)" fill="none" stroke="#5b5b5b" stroke-width="0.25"/>
 						<line id="Line_9" data-name="Line 9" x2="351" transform="translate(12.5 564.5)" fill="none" stroke="#5b5b5b" stroke-width="0.25"/>
 						
-						<path style="display:none;" id="Polygon_1_u" data-name="Polygon 1" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 246)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_2_u" data-name="Polygon 2" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 288)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_3_u" data-name="Polygon 3" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 330)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_4_u" data-name="Polygon 4" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 372)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_5_u" data-name="Polygon 5" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 414)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_6_u" data-name="Polygon 6" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 456)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_7_u" data-name="Polygon 7" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 497)" fill="#49e052"/>
-						<path style="display:none;" id="Polygon_8_u" data-name="Polygon 8" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 539)" fill="#49e052"/>
+						<path v-if="polygon_1_u" id="Polygon_1_u" data-name="Polygon 1" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 246)" fill="#49e052"/>
+						<path v-if="polygon_2_u" id="Polygon_2_u" data-name="Polygon 2" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 288)" fill="#49e052"/>
+						<path v-if="polygon_3_u" id="Polygon_3_u" data-name="Polygon 3" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 330)" fill="#49e052"/>
+						<path v-if="polygon_4_u" id="Polygon_4_u" data-name="Polygon 4" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 372)" fill="#49e052"/>
+						<path v-if="polygon_5_u" id="Polygon_5_u" data-name="Polygon 5" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 414)" fill="#49e052"/>
+						<path v-if="polygon_6_u" id="Polygon_6_u" data-name="Polygon 6" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 456)" fill="#49e052"/>
+						<path v-if="polygon_7_u" id="Polygon_7_u" data-name="Polygon 7" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 497)" fill="#49e052"/>
+						<path v-if="polygon_8_u" id="Polygon_8_u" data-name="Polygon 8" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(280 539)" fill="#49e052"/>
 						
-						<path style="display:none;" id="Polygon_1_d" data-name="Polygon 1" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 256) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_2_d" data-name="Polygon 2" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 298) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_3_d" data-name="Polygon 3" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 340) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_4_d" data-name="Polygon 4" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 382) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_5_d" data-name="Polygon 5" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 424) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_6_d" data-name="Polygon 6" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 466) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_7_d" data-name="Polygon 7" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 507) rotate(180)" fill="#ff4d54"/>
-						<path style="display:none;" id="Polygon_8_d" data-name="Polygon 8" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 549) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_1_d" id="Polygon_1_d" data-name="Polygon 1" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 256) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_2_d" id="Polygon_2_d" data-name="Polygon 2" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 298) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_3_d" id="Polygon_3_d" data-name="Polygon 3" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 340) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_4_d" id="Polygon_4_d" data-name="Polygon 4" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 382) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_5_d" id="Polygon_5_d" data-name="Polygon 5" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 424) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_6_d" id="Polygon_6_d" data-name="Polygon 6" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 466) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_7_d" id="Polygon_7_d" data-name="Polygon 7" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 507) rotate(180)" fill="#ff4d54"/>
+						<path v-if="polygon_8_d" id="Polygon_8_d" data-name="Polygon 8" d="M5.241.886a1,1,0,0,1,1.519,0l3.826,4.463A1,1,0,0,1,9.826,7H2.174a1,1,0,0,1-.759-1.651Z" transform="translate(292 549) rotate(180)" fill="#ff4d54"/>
 						
 					</g>
 				</svg>
@@ -174,8 +174,26 @@
 					</g>
 				</svg>
 			</section>
-			<div id="cj_transaction" class="top trading-field"></div>
-            <div class="list-page cj-list-page" style="margin-top:5%;"></div>
+			<div id="cj_transaction" class="top trading-field">
+				<div v-for="item of mycjlist" class="row" :key="item.id">
+					<div class='trading-field-div'>
+						<section class="trading-subfield">
+							<img v-bind:src="item.img" alt=""/>
+							<div>
+								<section>
+									<p>{{item.symbol}}</p>
+									<span v-html="item.status_color"></span>
+								</section>
+								<section>
+									<p style="color: #CECECE; font-size: 10px; font-weight:bold;">{{ item.t_type }}</p>
+									<p style="color: #CECECE; font-size: 10px; font-weight:bold;">{{item.datetime}}</p>
+								</section>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+            <div class="list-page cj-list-page" style="margin-top:5%;" v-html="cj_list_page"></div>
 		</main>
     </section>
 </template>
@@ -183,21 +201,64 @@
 <script>
 
 import $ from 'jquery'
-import Axios from 'axios'
+// import Axios from 'axios'
 import NavBar from "./NavBar.vue"
 
-var headers = {
-        // 'Access-Control-Allow-Origin' : '*',
-        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        'Content-Type':'application/json'
-      };
+const userWalletJsonData = require('./json/user_wallet.json');
+const referalReportJsonData = require('./json/referal_report.json');
+const profitReportJsonData = require('./json/profit_report.json');
+const winRateJsonData = require('./json/win_rate.json');
+const mycjJsonData = require('./json/mycj.json');
+
+// var headers = {
+//         // 'Access-Control-Allow-Origin' : '*',
+//         // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+//         'Content-Type':'application/json'
+//       };
 
 export default {
     components: {
         NavBar
     },
+
+	data: function() {
+		return {
+			available_bal: '--',
+			small_bal: '--',
+			referral_bonus: '--',
+			nft_earning: '--',
+			pairing_bonus: '--',
+			matching_bonus: '--',
+			direct_bonus: '--',
+			win_rate: '--',
+			total_profit: '--',
+			total_profit_percentage: '--',
+			today_profit: '--',
+			week_profit: '--',
+			month_profit: '--',
+			cj_list_page: 0,
+			polygon_1_u: false,
+			polygon_1_d: false,
+			polygon_2_u: false,
+			polygon_2_d: false,
+			polygon_3_u: false,
+			polygon_3_d: false,
+			polygon_4_u: false,
+			polygon_4_d: false,
+			polygon_5_u: false,
+			polygon_5_d: false,
+			polygon_6_u: false,
+			polygon_6_d: false,
+			polygon_7_u: false,
+			polygon_7_d: false,
+			polygon_8_u: false,
+			polygon_8_d: false,
+			mycjlist: [],
+		}
+	},
     
     created() {
+		/*
 
         // TODO: get-api: http://test.ait.capital/api/index/Api/userWallet 
 		Axios({
@@ -406,6 +467,129 @@ export default {
           // this.errorMessage = error;
           console.error("Request: " + error);
         });
+		*/
+
+		// from Local Json data
+
+		if (userWalletJsonData.code == 1) {
+			var arr = userWalletJsonData.data;
+			this.available_bal = (Math.floor(arr.usdt * 100)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+			this.small_bal = parseFloat(Math.floor(arr.gas * 100)/100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+		}
+
+		if (referalReportJsonData.code == 1) {
+            arr = referalReportJsonData.data;
+			this.referral_bonus = arr.referral_bonus;
+			this.nft_earning = arr.nft_earning;
+			this.pairing_bonus = arr.pairing_bonus;
+			if(arr.pairing_bonus>0){
+				$("#Polygon_6_u").show();
+				this.polygon_6_u = true;
+			}else if(arr.pairing_bonus<0){
+				$("#Polygon_6_d").show();
+				this.polygon_6_d = true;
+			}
+			this.matching_bonus = arr.matching_bonus;
+			if(arr.matching_bonus>0){
+				$("#Polygon_7_u").show();
+				this.polygon_7_u = true;
+			}else if(arr.matching_bonus<0){
+				$("#Polygon_7_d").show();
+				this.polygon_7_d = true;
+			}
+			this.direct_bonus = arr.direct_bonus;
+			if(arr.direct_bonus>0){
+				$("#Polygon_8_u").show();
+				this.polygon_8_u = true;
+			}else if(arr.direct_bonus<0){
+				$("#Polygon_8_d").show();
+				this.polygon_8_d = true;
+			}
+		}
+
+		if (winRateJsonData.code == 1) {
+            arr = winRateJsonData.data;
+			this.win_rate = arr.win_rate;
+			if(arr.win_rate>0){
+				$("#Polygon_1_u").show();
+				this.polygon_1_u = true;
+			}else if(arr.win_rate<0){
+				$("#Polygon_1_d").show();
+				this.polygon_1_d = true;
+			}
+		}
+		if (profitReportJsonData.code == 1) {
+            arr = profitReportJsonData.data;
+			this.total_profit = arr.total_profit;
+			this.total_profit_percentage = arr.total_profit_percentage;
+			if(arr.total_profit_percentage>0){
+				$("#Polygon_2_u").show();
+				this.polygon_2_u = true;
+			}else if(arr.total_profit_percentage<0){
+				$("#Polygon_2_d").show();
+				this.polygon_2_d = true;
+			}
+			this.today_profit = arr.today_profit;
+			if(arr.today_profit>0){
+				$("#Polygon_3_u").show();
+				this.polygon_3_u = true;
+			}else if(arr.today_profit<0){
+				$("#Polygon_3_d").show();
+				this.polygon_3_d = true;
+			}
+			this.week_profit = arr.week_profit;
+			if(arr.week_profit>0){
+				$("#Polygon_4_u").show();
+				this.polygon_4_u = true;
+			}else if(arr.week_profit<0){
+				$("#Polygon_4_d").show();
+				this.polygon_4_d = true;
+			}
+			this.month_profit = arr.month_profit
+			if(arr.month_profit>0){
+				$("#Polygon_5_u").show();
+				this.polygon_5_u = true;
+			}else if(arr.month_profit<0){
+				$("#Polygon_5_d").show();
+				this.polygon_5_d = true;
+			}
+          }
+
+		if (mycjJsonData.code == 1) {
+			var list = mycjJsonData.data.list;
+			var data = [];
+			for (let index = 0; index < list.length; index++) {
+				data = [];
+				const element = list[index];
+				data.id = index;
+				data.status_color = '<span style="color: #696969;">--';
+
+				if (element.sold_price !== 0) {
+					if(element.earning>=0){
+						data.status_color = '<span style="color: #49E052;">+'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "(USDT)</span>";
+					}else{
+						data.status_color = '<span style="color: #ff4d54;">-'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "(USDT)</span>";
+					}
+				}
+
+				data.img = element.img;
+				data.symbol = element.symbol;
+				data.t_type = element.t_type;
+				data.datetime = element.datetime;
+				this.mycjlist[index] = data;
+			}
+			this.cj_list_page = mycjJsonData.data.page;
+		} 
     },
 }
 </script>
+
+<style>
+	@import '../assets/css/styles.css';
+
+	.pagination li a {
+		text-decoration: none!important;
+		color: #fff!important;
+	}
+
+</style>

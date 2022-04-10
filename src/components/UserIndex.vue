@@ -147,16 +147,16 @@
         <section class="home-bar">
             <div class="home-bar-title">
                 <p>Gas</p>
-                <p><span id="gas_amount">{{ gas_amuont }}</span> USDT</p>
+                <p><span id="gas_amount">{{ gas_amount }}</span> USDT</p>
             </div>
-            <div class="home-bar-line"><div id="gas_percent" style="width: 0%;"></div></div>
+            <div class="home-bar-line"><div id="gas_percent" v-bind:style="{ width: gas_percent + '%'}">{{gas_percent}}%</div></div>
         </section>
         <section class="home-bar">
             <div class="home-bar-title">
                 <p>Activate Days</p>
                 <p><span id="days_left">{{days_left}}</span> Days/<span id="days_total">{{days_total}}</span></p>
             </div>
-            <div class="home-bar-line"><div id="days_percent" style="width: 0%;">{{days_percent}}%</div></div>
+            <div class="home-bar-line"><div id="days_percent" v-bind:style="{ width: days_percent + '%'}">{{days_percent}}%</div></div>
         </section>
         <section class="help-search-answers">
             <p>Crypto News</p>
@@ -171,8 +171,8 @@
         <section class="help-questions" v-else>
             <div v-for="n of news" class="row" :key="n.id">
               <div class='user-news-grid'>
-                <div>
-                  <img class='image-news' src= '{{ n.img_src }}'>
+                <div  @click="show_news(n.link)">
+                  <img class='image-news' v-bind:src= "n.img_src" >
                   <section class='section-news'>
                     <p class='small-word-news'>{{n.date}}</p>
                     <p class='smaller-word-news'>{{ n.title }}</p>
@@ -219,55 +219,29 @@
 
 <script>
 
-  import Axios from 'axios'
+  // import Axios from 'axios'
   import NavBar from "./NavBar.vue";
   import {h} from 'vue';
   import QRCode from "qrcode";
-  // import $ from 'jquery';
+  import $ from 'jquery';
+
+  const homeJsonData = require('./json/user_home.json');
+  const walletJsonData = require('./json/user_wallet.json');
+  const rsstoData = require('./json/user_rsstojson.json');
 
   export default {
     data: function() {
       return {
           isOpen: true,
-          gas_amuont: 0,
+          gas_amount: 0,
+          gas_percent: 0,
           days_total: "--",
           days_left: "--",
           days_percent: 0,
           qrcode: '',
           msg: [],
           heart_flag: true,
-          news: [
-            {
-              id: 0,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 1,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 2,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 3,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-            {
-              id: 4,
-              img_src: 'news.jpg',
-              date: 'Fir,25 Mar 2022 12:17:36',
-              title: 'Bank of England and regulators assess crypto regulation in raft of new reports'
-            },
-          ]
+          news: []
         };
     },
 
@@ -304,13 +278,13 @@
     },
 
     created() {
-
+      /*
       var headers = {
-        // 'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Origin' : '*',
         // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         'Content-Type':'application/json'
       }
-
+    
       Axios({
               method:'GET',
               url:'http://test.ait.capital/api/index/Api/home',
@@ -407,6 +381,44 @@
           // this.errorMessage = error;
           console.error("Request: " + error);
         });
+      */
+      if (homeJsonData.code == 1) {
+        var arr = homeJsonData.data;
+        if (parseInt(arr.days_total) && parseInt(arr.days_left)) {
+          this.days_total = arr.days_total;
+          this.days_left = arr.days_left;
+          this.days_percent = (arr.days_left/arr.days_total * 100).toFixed(2);
+          $("#days_percent").text(this.days_percent+'%');
+          $("#days_percent").animate({ width: this.days_percent+'%' }, 1500);
+        }
+      } else {
+        //this.onLogout();
+      }
+
+      if (walletJsonData.code == 1) {
+        arr = walletJsonData.data;
+        if(parseInt(arr.gas)){
+            this.gas_percent = Number(arr.gas).toFixed(2);
+            this.gas_amount = this.gas_percent;
+            this.gas_percent = Math.min(this.gas_percent, 100);
+        }
+      }
+
+      if (rsstoData.code == 1) {
+        var list = rsstoData.data;
+        this.heart_flag = false;
+        var data = [];
+        for (let index = 0; index < list.length; index++) {
+          data = [];
+          const element = list[index];
+          data.id = index;
+          data.img_src = element.content_url;
+          data.date = element.pubDate;
+          data.title = element.title;
+          data.link = element.link;
+          this.news[index] = data;
+        }
+      }
     },
 
     components: {
@@ -427,6 +439,10 @@
     },
 
     methods: {
+      show_news: function(url) {
+        console.log('News URL: ' + url);
+      },
+
       showmodal: function() {
         var qrcode = new QRCode(document.getElementById("qrcode"), {
                 width: 160,

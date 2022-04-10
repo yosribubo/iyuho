@@ -33,11 +33,11 @@
                         <div class="col-6">
                             <h5 id='user_name' style="color:#fff;font-size: 1rem;font-weight: 700;margin:5px 0 0px 0">{{user_name}}</h5>
                             <h5 id='user_package' style="color:#909090;font-size: 0.7rem;font-weight: 700;margin:0px 0 8px 0">{{user_package}}</h5>
-                            <p id="self_register" style="display:none;">
+                            <p id="self_register" style="" v-if="flag_self_register" v-html="my_register">
                             </p>
                         </div>
                         <div class="col-6 text-right">
-                            <img src="@/assets/img/logo.svg" width="20%" >
+                            <img src="@/assets/img/logo.svg" style="width: 20%" width="30" height="45">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="ri-section">
                     <span class="ri-section-title">USDT</span>
-                    <div id="qrcode_left" style="position: absolute;left:10px;display:none;">
+                    <div id="qrcode_left" style="position: absolute;left:10px;" v-if="flag_qrcode_left">
                         <svg style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 60%), 0 6px 20px 0 rgb(0 0 0 / 60%);" width="24px" height="24px" color="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M8,21H4a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H8a1,1,0,0,0,0-2Zm14-6a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H16a1,1,0,0,0,0,2h4a3,3,0,0,0,3-3V16A1,1,0,0,0,22,15ZM20,1H16a1,1,0,0,0,0,2h4a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V4A3,3,0,0,0,20,1ZM2,9A1,1,0,0,0,3,8V4A1,1,0,0,1,4,3H8A1,1,0,0,0,8,1H4A3,3,0,0,0,1,4V8A1,1,0,0,0,2,9Zm8-4H6A1,1,0,0,0,5,6v4a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V6A1,1,0,0,0,10,5ZM9,9H7V7H9Zm5,2h4a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H14a1,1,0,0,0-1,1v4A1,1,0,0,0,14,11Zm1-4h2V9H15Zm-5,6H6a1,1,0,0,0-1,1v4a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,17H7V15H9Zm5-1a1,1,0,0,0,1-1,1,1,0,0,0,0-2H14a1,1,0,0,0-1,1v1A1,1,0,0,0,14,16Zm4-3a1,1,0,0,0-1,1v3a1,1,0,0,0,0,2h1a1,1,0,0,0,1-1V14A1,1,0,0,0,18,13Zm-4,4a1,1,0,1,0,1,1A1,1,0,0,0,14,17Z" stroke="#fff" fill="#fff"/></svg>
                     </div>
                     <div class="ri-section-left-right">
@@ -85,7 +85,7 @@
                         <span id='right_position'>{{right_position}}</span>
                         <span>Right</span>
                     </div>
-                    <div id="qrcode_right" style="position: absolute;right:10px;display:none;">
+                    <div id="qrcode_right" style="position: absolute;right:10px;" v-if="flag_qrcode_right" >
                         <svg style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 60%), 0 6px 20px 0 rgb(0 0 0 / 60%);" width="24px" height="24px" color="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M8,21H4a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H8a1,1,0,0,0,0-2Zm14-6a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H16a1,1,0,0,0,0,2h4a3,3,0,0,0,3-3V16A1,1,0,0,0,22,15ZM20,1H16a1,1,0,0,0,0,2h4a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V4A3,3,0,0,0,20,1ZM2,9A1,1,0,0,0,3,8V4A1,1,0,0,1,4,3H8A1,1,0,0,0,8,1H4A3,3,0,0,0,1,4V8A1,1,0,0,0,2,9Zm8-4H6A1,1,0,0,0,5,6v4a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V6A1,1,0,0,0,10,5ZM9,9H7V7H9Zm5,2h4a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H14a1,1,0,0,0-1,1v4A1,1,0,0,0,14,11Zm1-4h2V9H15Zm-5,6H6a1,1,0,0,0-1,1v4a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,17H7V15H9Zm5-1a1,1,0,0,0,1-1,1,1,0,0,0,0-2H14a1,1,0,0,0-1,1v1A1,1,0,0,0,14,16Zm4-3a1,1,0,0,0-1,1v3a1,1,0,0,0,0,2h1a1,1,0,0,0,1-1V14A1,1,0,0,0,18,13Zm-4,4a1,1,0,1,0,1,1A1,1,0,0,0,14,17Z" stroke="#fff" fill="#fff"/></svg>
                     </div>
                 </div>
@@ -96,16 +96,46 @@
                 <span>My Team</span>
             </div>
             <div class="scrollmenu">
-                
+                <span @click="next_list(current)" id="list{{current}}" value="{{user_name}}">{{user_name}}&gt;</span>
             </div>
             <p class="list_loader"></p>
             <div>
-                <div class="gradient-list" id="team_list">
-                
+                <div v-for="item of teamlist" class="row" :key="item.id">
+                    <div class="gradient-list" id="team_list" style="">
+                        <div class="transfer-field-input" style="align-items: baseline;width:98%; height:auto;">
+                            <div style="float:left;width:60%;">
+                                <h3 class="h5">
+                                    <span id="user10237" class="black"> {{item.username}} </span>
+                                    <span style="padding:5px;font-size:0.75rem;color:goldenrod;border-radius: 5px;background: #3b3b3b;">{{item.position_name}}</span>
+                                </h3>
+                                <p class="small">Total Earning: {{item.user_total }} USDT</p>
+                                <p class="small">Left Total Earning: {{item.left_group }} USDT</p>
+                                <p class="small" style="margin-bottom: 6px;">Right Total Earning: {{item.right_group}} USDT</p>
+                                <p id="activate_{{item.id}}" class="small" style="padding:5px 0;">
+                                    <span style="box-shadow:0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 50%);padding:5px;background:linear-gradient(180deg, maroon 0%, black 100%);border-radius:5px;text-decoration: none;" onclick="activate_account(10237)">Register (L/R)</span>
+                                </p>
+                            </div>
+                            <div class="small" style="float:right;width:40%;text-align:right;">
+                                <p>{{item.datetime}}</p>
+                                <br>
+                                <div v-if="item.total_group > 0">
+                                    <p v-on:click="next_list(item.id)">
+                                        <span style="padding:10px;background:linear-gradient(180deg, #83e4e2 0%, #a2ed56 100%);color:#000;border-radius:5px;text-decoration: none;">{{item.total_group}} <i class="fa fa-user"></i></span>
+                                    </p>
+                                </div>
+                                <div v-else>
+                                    <p>
+                                        <span style="padding:10px;background:linear-gradient(180deg, #83e4e2 0%, #a2ed56 100%);color:#000;border-radius:5px;text-decoration: none;">{{item.total_group}} <i class="fa fa-user"></i></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="furthest_div">
-                    <span id="furthest_left" class="furthest_button">&laquo;</span>
-                    <span id="furthest_right" class="furthest_button">&raquo;</span>
+                    <span id="furthest_left" class="furthest_button" style="opacity: 0.2;">«</span>
+                    <span id="furthest_right" class="furthest_button" style="opacity: 0.2;">»</span>
                 </div>
             </div>
         </main>
@@ -125,11 +155,13 @@
     import axios from 'axios';
     import $ from 'jquery';
 
-    const headers = {
-                    // 'Access-Control-Allow-Origin' : '*',
-                    // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                    'Content-Type':'application/json'
-                };
+    const myteamJsonData = require('./json/myteam.json');
+
+    // const headers = {
+    //                 // 'Access-Control-Allow-Origin' : '*',
+    //                 // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    //                 'Content-Type':'application/json'
+    //             };
     export default {
         data: function () {
             return {
@@ -143,6 +175,10 @@
                 closed_team: '--',
                 left_position: '--',
                 right_position: '--',
+                flag_qrcode_left: false,
+                flag_qrcode_right: false,
+                flag_self_register: false,
+                teamlist: [],
             }
         },
 
@@ -151,7 +187,7 @@
                 $('.dropdown-content').toggle();
             });
                 // TODO: api/myteam
-                
+                /*
                 axios({
                     method:'GET',
                     url:'http://test.ait.capital/api/index/Api/myteam',
@@ -215,8 +251,83 @@
                 console.error("Request: " + error);
                 }
             );
-
+            */
             
+            
+        },
+
+        mounted() {
+            if (myteamJsonData.code == 1) {
+                var arr = myteamJsonData.data;
+                this.current = arr.current;
+                this.self = arr.current;
+
+                this.flag_qrcode_left = true;
+                this.flag_qrcode_right = true;
+
+                this.user_name = arr.user_name;
+                this.user_package = arr.user_package;
+                this.opened_direct = arr.opend;
+                this.closed_direct = arr.closed;
+                this.opened_team = arr.opened_team;
+                this.closed_team = arr.closed_team;
+                this.left_position = arr.left_my;
+                this.right_position = arr.right_my;
+
+                if (arr.down_right || arr.down_left) {
+                    var my_position = '';
+                    if(arr.down_right && arr.down_left){
+                        my_position = "(L/R)"
+                    }else if(arr.down_right){
+                        my_position = "(R)"
+                    }else if(arr.down_left){
+                        my_position = "(L)"
+                    }
+                    this.my_register = '<span style="box-shadow:0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 50%);padding:5px;background:linear-gradient(180deg, maroon 0%, black 100%);border-radius:5px;font-size: 10px;" onclick="activate_account('+arr.id+')">Register '+my_position+'</span>';
+                    // document.getElementById('self_register').html(my_register);
+                    this.flag_self_register =true;
+                }
+                var team_list = arr.list;
+                // $('#list'+this.current).nextAll().add('#list'+this.current).remove();
+                // $( ".scrollmenu" ).append( '<span onclick="next_list('+ this.current +')" id="list'+ this.current +'" value="'+ arr.user_name +'">'+  arr.user_name +'></span>' );
+                
+                var data=[];
+                for (let index = 0; index < team_list.length; index++) {
+                    data = [];
+                    const element = team_list[index];
+                    data = element;
+                    
+                    if (element.down_right || element.down_left) {
+                        if (element.down_right && element.down_left) {
+                            data.position="(L/R)";
+                        } else if (element.down_right) {
+                            data.position = "(R)";
+                        } else if (element.down_left) {
+                            data.position = "(L)";
+                        }
+                    }
+
+                    data.status_color = '<span style="color: #696969;">--';
+
+                    if (element.sold_price !== 0) {
+                        if(element.earning>=0){
+                            data.status_color = '<span style="color: #49E052;">+'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "(USDT)</span>";
+                        }else{
+                            data.status_color = '<span style="color: #ff4d54;">-'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "(USDT)</span>";
+                        }
+                    }
+
+                    this.teamlist[index] = data;
+                }
+                
+                // $("#team_list").html('');
+                // $('#team_list').fadeOut(100, function() { 
+                //     $(this).html('');
+                //     $(this).fadeIn();
+                //     team_list.forEach(this.build_list);
+                // });
+                // this.furthest_b(this.current);
+            }
         },
 
         methods: {

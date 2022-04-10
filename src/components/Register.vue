@@ -102,7 +102,7 @@
 
     import Axios from "axios";
     import intlTelInput from "../assets/build/js/intlTelInput.js";
-    import {$,jQuery} from 'jquery';
+    import $ from 'jquery';
 
 
 export default {
@@ -142,8 +142,8 @@ export default {
                     url:'http://app.iyuho.net/Api/invit',
                     data: {invit:invit_data},
                     headers:{
-                        // 'Access-Control-Allow-Origin' : '*',
-                        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Access-Control-Allow-Origin' : '*',
+                        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
                         'Content-Type':'application/json'
                     }
                 })
@@ -162,8 +162,8 @@ export default {
                     url:'http://app.iyuho.net/Api/invit',
                     data: {direct:direct_data},
                     headers:{
-                        // 'Access-Control-Allow-Origin' : '*',
-                        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Access-Control-Allow-Origin' : '*',
+                        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
                         'Content-Type':'application/json'
                     }
                 })
@@ -355,11 +355,11 @@ export default {
                 method:'post',
                 url:'http://test.ait.capital/api/index/Api/upregister',
                 data: form,
-                // headers:{
-                //     'Access-Control-Allow-Origin' : '*',
-                //     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                //     'Content-Type':'application/json'
-                // }
+                headers:{
+                    'Access-Control-Allow-Origin' : '*',
+                    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    'Content-Type':'application/json'
+                }
             }) 
             .then( response => {
                 console.log(response);

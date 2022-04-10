@@ -76,19 +76,7 @@
                     return false
                 }
             },
-
-            goHome: function () {
-                window.location.href = "/user/index";
-            },
-
-            goAiApi: function () {
-                window.location.href = "/user/myapi";
-            },
-
-            goEarning: function () {
-                window.location.href = "/user/earning";
-            },
-
+            
             onActive: function (e) {
                 let svglist = document.getElementsByTagName("svg");
                 for (let i = 0; i < svglist.length; i++) {

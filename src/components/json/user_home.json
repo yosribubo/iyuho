@@ -1,0 +1,19 @@
+{
+    "status": 1,
+    "code": 1,
+    "info": "Success",
+    "msg": "Success",
+    "data": {
+        "banner1": "5f7334787a40c.png",
+        "banner2": "",
+        "banner3": "",
+        "banner4": "",
+        "banner5": "",
+        "banner6": "",
+        "banner7": "606d316104758.jpeg",
+        "days_left": 679,
+        "days_total": 730
+    },
+    "url": "",
+    "wait": 3
+}
