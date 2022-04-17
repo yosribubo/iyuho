@@ -17,16 +17,15 @@ import Register from './components/Register';
 // import Toasted from 'vue-toasted';
 
 const routes = [
-  { path: '/', component: LoginPage, title: "IYUHO" },
-  { path: '/login', component: LoginPage, title: "IYUHO"},
-  { path: '/logout', component: LoginPage, title: "IYUHO"},
-  { path: '/user/index', component: UserIndex, title: "IYUHO"},
-  { path: '/user/myapi', component: MyApi, title: "IYUHO"},
-  { path: '/user/earning', component: MyEarning, title: "IYUHO"},
-  { path: '/user/myteam', component: MyTeam, title: "IYUHO"},
-  { path: '/user/mylock', component: MyLock, title: "IYUHO"},
-  { path: '/user/myteam', component: MyTeam, title: "IYUHO"},
-  { path: '/user/Register', component: Register, title: "IYUHO"},
+  { path: '/', component: LoginPage, title: "IYUHO", name:"home" },
+  { path: '/login', component: LoginPage, title: "IYUHO", name:"login"},
+  { path: '/logout', component: LoginPage, title: "IYUHO", name:"logout"},
+  { path: '/user/index', component: UserIndex, title: "IYUHO", name:"user"},
+  { path: '/user/myapi', component: MyApi, title: "IYUHO", name:"myapi"},
+  { path: '/user/earning', component: MyEarning, title: "IYUHO", name:"earning"},
+  { path: '/user/mylock', component: MyLock, title: "IYUHO", name:"mylock"},
+  { path: '/user/myteam', component: MyTeam, title: "IYUHO", name:"myteam"},
+  { path: '/user/Register', component: Register, title: "IYUHO", name:"register"},
 ]
 
 const router = createRouter({

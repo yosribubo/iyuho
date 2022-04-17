@@ -37,6 +37,7 @@
 *{
     margin: 0;
     padding: 0;
+    /* font-family: 'Outfit-Bold'; */
 }
 body{
     width: 100%;
@@ -226,7 +227,7 @@ nav section{
 .list-page{
     text-align:center;
     padding:1%;
-    font-size: 14px;
+    font-size: 14px!important;
 }
 
 .pagination{
@@ -398,7 +399,7 @@ nav section{
 }
 /* List */
 .list-field{
-    width: 96%;
+    width: 100%;
     padding:0 2%;
     height: 100px;
     margin: 10px 0px;
@@ -443,6 +444,7 @@ nav section{
     font-size: 16px;
     font-family: 'Outfit-Regular';
     color: #ffffff;
+    margin: 0;
 }
 .list-subfield div section span{
     font-size: 12px;
@@ -452,13 +454,14 @@ nav section{
 }
 .list-subfieldbottom{
     width: 100%;
+    padding-top: 3px;
 }
 .list-subfieldbottom div{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 5px 0px;
+    margin: 1px 0px;
 }
 .list-subfieldbottom div p{
     font-size: 13px;
@@ -527,6 +530,8 @@ nav section{
     font-size: 16px;
     font-family: 'Outfit-Regular';
     color: #ffffff;
+    margin-bottom: 0px;
+    height: 20px;
 }
 .trading-subfield div section span{
     font-size: 13px;
@@ -761,6 +766,7 @@ nav section{
     font-size: 10px;
     font-family: 'Outfit-Medium';
     color: white;
+    margin-bottom: 0;
 }
 .home-bar{
     width: 100%;
@@ -809,7 +815,7 @@ nav section{
 /* Dashboard Page */
 .dashboard-details{
     width: 100%;
-    margin-top: 25px;
+    margin-top: 27px;
 }
 /* qrcode */
 .receieved-lg-text {

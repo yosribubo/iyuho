@@ -22,6 +22,7 @@
     "intl-tel-input": "^17.0.16",
     "node-sass": "^7.0.1",
     "qrcode": "^1.5.0",
+    "qrcode.vue": "^3.3.3",
     "swiper": "^8.0.7",
     "vue": "^3.2.31",
     "vue-infinite-scroll": "^2.0.2",

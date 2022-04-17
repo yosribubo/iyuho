@@ -27,7 +27,7 @@
     <div class="popup-banner">
             <iframe id="iframe_news" src=""></iframe>
     </div>
-    <div class="black-screen"></div>
+    <div class="black-screen" v-on:click="hiddenscreen"></div>
     <main class="top bottom">
         <div id="banner" class="carousel slide" data-bs-ride="carousel">
 
@@ -66,7 +66,7 @@
 
         <section class="home-box">
             <div id="deposit_url">
-                <img src="../assets/img/deposit4.png"  width="40.001" height="40">
+                <img src="../assets/img/deposit4.png"  width="40.001">
                 <p>My Wallet</p>
             </div>
             <div id="transfer_url">
@@ -86,7 +86,7 @@
             </div>
         </section>
         <section class="home-box">
-            <div id="lock_url">
+            <div id="lock_url" v-on:click="goLock">
                 <svg xmlns="http://www.w3.org/2000/svg" width="29.576" height="25.894" viewBox="0 0 29.576 25.894">
                     <g id="Group_388" data-name="Group 388" transform="translate(-61 -85.277)">
                       <path id="Path_96" data-name="Path 96" d="M74.92,99.219a4.9,4.9,0,0,0,4.738,3.93A4.442,4.442,0,0,0,83.5,101.2a5.984,5.984,0,0,0,.9-1.982.758.758,0,0,1,.744-.611h8.988L89.371,86.249a1.526,1.526,0,0,0-1.415-.972h-16.6a1.526,1.526,0,0,0-1.415.972L65.188,98.608h8.988a.758.758,0,0,1,.744.611Zm-.429-10.035H84.825a.758.758,0,1,1,0,1.517H74.492a.758.758,0,0,1,0-1.517Zm-2.546,5.167a.758.758,0,0,1,.758-.758h13.91a.758.758,0,0,1,0,1.517H72.7A.758.758,0,0,1,71.945,94.351Z" transform="translate(-3.87)" fill="#ffcb74"/>
@@ -171,7 +171,7 @@
         <section class="help-questions" v-else>
             <div v-for="n of news" class="row" :key="n.id">
               <div class='user-news-grid'>
-                <div  @click="show_news(n.link)">
+                <div  @click="show_news(n.link, n.id)">
                   <img class='image-news' v-bind:src= "n.img_src" >
                   <section class='section-news'>
                     <p class='small-word-news'>{{n.date}}</p>
@@ -221,7 +221,7 @@
 
   // import Axios from 'axios'
   import NavBar from "./NavBar.vue";
-  import {h} from 'vue';
+  // import {h} from 'vue';
   import QRCode from "qrcode";
   import $ from 'jquery';
 
@@ -440,7 +440,32 @@
 
     methods: {
       show_news: function(url) {
-        console.log('News URL: ' + url);
+        
+        /*
+        Axios({
+              method:'GET',
+              url:'https://app.iyuho.net/Api/rssList/url/' + url,
+              withCredentials: true,
+              headers: headers
+          }) 
+        .then(data => {
+          if(data.status == 1){
+            $("#iframe_news").attr('src',data.data);
+            $.when($(".black-screen").show(300,"swing"))
+            .done(function() { $('.popup-banner').show();
+            });
+          }
+        })
+        .catch(error => {
+          // this.errorMessage = error;
+          console.error("Request: " + error);
+        });
+        */
+
+        $("#iframe_news").attr('src',url);
+        $.when($(".black-screen").show(300,"swing"))
+        .done(function() { $('.popup-banner').show();
+        });
       },
 
       showmodal: function() {
@@ -463,12 +488,21 @@
       },
 
       onLogout: function() {
-        window.location.href = "/";
+        this.$router.push({ name: 'logout' })
       },
 
       goTeam: function () {
         // TODO: router-link
-        window.location.href = '/User/myteam';
+        this.$router.push({ name: 'myteam' })
+      },
+
+      goLock: function () {
+        this.$router.push({name: "mylock"});
+      },
+
+      hiddenscreen: function () {
+        $('.popup-banner').hide();
+        $(".black-screen").hide(300,"swing")
       }
       
     },
@@ -477,13 +511,13 @@
 
     },
 
-    render() {
-      return h('#user', { onClick: () => {
-        alert('click');
-        document.getElementsByClassName('popup-banner').hide();
-        document.getElementsByClassName('black-screen').hide(300, 'swing');
-      } })
-    }
+    // render() {
+    //   return h('#user', { onClick: () => {
+    //     alert('click');
+    //     document.getElementsByClassName('popup-banner').hide();
+    //     document.getElementsByClassName('black-screen').hide(300, 'swing');
+    //   } })
+    // }
   };
   </script>
 

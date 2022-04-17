@@ -236,6 +236,7 @@ export default {
 			today_profit: '--',
 			week_profit: '--',
 			month_profit: '--',
+			usdt: '--',
 			cj_list_page: 0,
 			polygon_1_u: false,
 			polygon_1_d: false,
@@ -566,9 +567,9 @@ export default {
 
 				if (element.sold_price !== 0) {
 					if(element.earning>=0){
-						data.status_color = '<span style="color: #49E052;">+'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "(USDT)</span>";
+						data.status_color = '<span style="color: #49E052;">+'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "</span><span> (USDT)</span>";
 					}else{
-						data.status_color = '<span style="color: #ff4d54;">-'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "(USDT)</span>";
+						data.status_color = '<span style="color: #ff4d54;">-'+"$" + Math.abs(element.earning).toLocaleString("en-US") + "</span><span> (USDT)</span>";
 					}
 				}
 

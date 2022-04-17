@@ -84,7 +84,7 @@
 
         methods: {
             goBack: function () {
-                window.history.back();
+                this.$router.push({name:"user"});
             },
 
             usdtClick: function () {
@@ -152,7 +152,7 @@
             },
 
             onLogout: function() {
-                window.location.href = "/";
+                this.$router.push({name:"logout"});
             },
 
             lock_list: function(ctypes) {

@@ -11,7 +11,7 @@
                     </g>
                 </svg>
                 <p>My Team</p>
-                <div class="dropdown">
+                <div class="dropdown" style="margin-top:-5px">
                     <svg class="dropdown" id="dropdown-content" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" v-on:click="dropdowntoggle">
                         <g id="menu-left" transform="translate(-3 -7.1)">
                         <rect id="Rectangle_1" data-name="Rectangle 1" width="10" height="2" rx="1" transform="translate(10 7.1)" fill="#fff"/>
@@ -31,9 +31,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-6">
-                            <h5 id='user_name' style="color:#fff;font-size: 1rem;font-weight: 700;margin:5px 0 0px 0">{{user_name}}</h5>
-                            <h5 id='user_package' style="color:#909090;font-size: 0.7rem;font-weight: 700;margin:0px 0 8px 0">{{user_package}}</h5>
-                            <p id="self_register" style="" v-if="flag_self_register" v-html="my_register">
+                            <h5 id='user_name' style="color:#fff;font-size: 1rem;font-weight: 700;margin:6px 0 0px 0">{{user_name}}</h5>
+                            <h5 id='user_package' style="color:#909090;font-size: 0.7rem;font-weight: 700;margin:1px 0 5px 0">{{user_package}}</h5>
+                            <p id="self_register" style="height:23px;" v-if="flag_self_register" v-html="my_register">
                             </p>
                         </div>
                         <div class="col-6 text-right">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="ri-section">
                     <span class="ri-section-title">USDT</span>
-                    <div id="qrcode_left" style="position: absolute;left:10px;" v-if="flag_qrcode_left">
+                    <div id="qrcode_left" style="position: absolute;left:10px;" v-if="flag_qrcode_left" v-on:click="showQRCodeModal">
                         <svg style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 60%), 0 6px 20px 0 rgb(0 0 0 / 60%);" width="24px" height="24px" color="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M8,21H4a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H8a1,1,0,0,0,0-2Zm14-6a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H16a1,1,0,0,0,0,2h4a3,3,0,0,0,3-3V16A1,1,0,0,0,22,15ZM20,1H16a1,1,0,0,0,0,2h4a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V4A3,3,0,0,0,20,1ZM2,9A1,1,0,0,0,3,8V4A1,1,0,0,1,4,3H8A1,1,0,0,0,8,1H4A3,3,0,0,0,1,4V8A1,1,0,0,0,2,9Zm8-4H6A1,1,0,0,0,5,6v4a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V6A1,1,0,0,0,10,5ZM9,9H7V7H9Zm5,2h4a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H14a1,1,0,0,0-1,1v4A1,1,0,0,0,14,11Zm1-4h2V9H15Zm-5,6H6a1,1,0,0,0-1,1v4a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,17H7V15H9Zm5-1a1,1,0,0,0,1-1,1,1,0,0,0,0-2H14a1,1,0,0,0-1,1v1A1,1,0,0,0,14,16Zm4-3a1,1,0,0,0-1,1v3a1,1,0,0,0,0,2h1a1,1,0,0,0,1-1V14A1,1,0,0,0,18,13Zm-4,4a1,1,0,1,0,1,1A1,1,0,0,0,14,17Z" stroke="#fff" fill="#fff"/></svg>
                     </div>
                     <div class="ri-section-left-right">
@@ -91,8 +91,8 @@
                 </div>
             </div>
             <br>
-            <br>
-            <div class="ri-section-top">
+            <!-- <br> -->
+            <div class="ri-section-top" style="margin-top: 3px;">
                 <span>My Team</span>
             </div>
             <div class="scrollmenu">
@@ -142,17 +142,20 @@
         <div class="popup-qrcode">
             <div id="qrcode-div">
                 <div id="qrcode_title"></div>
-                <div id="qrcode"></div>
-                <div id="qrcode_button">Copy</div>
+                <div id="qrcode">
+                    <qrcode-vue :value="qrcode_value" :size="qrcode_size" level="H" />
+                </div>
+                <div id="qrcode_button" v-on:click="copy_url">Copy</div>
             </div>
         </div>
-        <div class="black-screen"></div>
+        <div class="black-screen" v-on:click="hiddenQRCodeModal"></div>
     </div>
 </template>
 
 <script>
 
     import axios from 'axios';
+    import QrcodeVue from 'qrcode.vue'
     import $ from 'jquery';
 
     const myteamJsonData = require('./json/myteam.json');
@@ -166,7 +169,7 @@
         data: function () {
             return {
                 current: '--',
-                selft: '--',
+                self: '--',
                 user_name: '--',
                 user_package: '--',
                 opened_direct: '--',
@@ -178,8 +181,15 @@
                 flag_qrcode_left: false,
                 flag_qrcode_right: false,
                 flag_self_register: false,
+                url_link: '',
+                qrcode_value: '',
+                qrcode_size: 300,
                 teamlist: [],
             }
+        },
+
+        components: {
+            QrcodeVue,
         },
 
         created() {
@@ -257,6 +267,7 @@
         },
 
         mounted() {
+
             if (myteamJsonData.code == 1) {
                 var arr = myteamJsonData.data;
                 this.current = arr.current;
@@ -267,7 +278,7 @@
 
                 this.user_name = arr.user_name;
                 this.user_package = arr.user_package;
-                this.opened_direct = arr.opend;
+                this.opened_direct = arr.opened;
                 this.closed_direct = arr.closed;
                 this.opened_team = arr.opened_team;
                 this.closed_team = arr.closed_team;
@@ -485,7 +496,10 @@
                 window.location.hrfef = "/User.register?invit="+id;
             },
 
-            copy_url: function (UrlToCopy) {
+            copy_url: function () {
+                var UrlToCopy = this.url_link
+                // alert('UrlToCopy');
+                console.log(UrlToCopy);
                 var TempText = document.createElement("input");
                 TempText.value = UrlToCopy;
                 document.body.appendChild(TempText);
@@ -493,6 +507,7 @@
                 
                 document.execCommand("copy");
                 document.body.removeChild(TempText);
+                return;
 
                 // TODO: copied message
 
@@ -506,18 +521,33 @@
                 $('.dropdown-content').toggle();
             },
 
+            showQRCodeModal: function() {
+                this.url_link = "https://app.iyuho.net/Invit/register?p=0&invit="+this.self;
+                // this.qrcode_value = url_link;
+                this.qrcode_value = 'http://linktr.ee/iyuho';
+                this.qrcode_size = 160;
+                $('#qrcode_title').html("Left Invitation");
+                $.when($(".black-screen").show(300,"swing"))
+                .done(function() { $('.popup-qrcode').show();});
+            },
+
+            hiddenQRCodeModal: function (){
+                $('.popup-qrcode').hide();
+                $(".black-screen").hide(300,"swing")
+            },
+
             goDirect_Drop: function() {
                 // TODO: routter-link
-                window.location.href = "/User/mydirect";
+                // this.$router.push({name: "mydirect"})
             },
 
             goBack: function() {
                 // TODO: routter-link
-                window.location.href = "/User/index"
+                this.$router.push({name:"user"})
             },
 
             onLogout: function() {
-                window.location.href = "/";
+                this.$router.push({name:"logout"})
             },
         }
     }

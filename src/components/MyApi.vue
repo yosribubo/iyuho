@@ -274,7 +274,21 @@
 </script>
 
 <style>
-    @import url('../assets/css/myapi.scss');
+    /* @import url('../assets/css/myapi.scss'); */
 
+    li{
+        padding:5px 0;
+        font-family:'Outfit-Light';
+        font-size:13px;
+    }
+    .checkbox
+    {
+        user-select: none;
+        -webkit-tap-highlight-color:transparent;
+    }
 
+    .checkbox:focus
+    {
+        outline: none;
+    }
 </style>
