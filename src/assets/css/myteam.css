@@ -5,6 +5,14 @@
         /* font-family: 'Outfit-Bold'; */
     }
 
+    div.myteam {
+        font-family: 'Outfit-Bold' !important;
+    }
+
+    div.myteam .transfer-field-input {
+        font-family: 'Outfit-Bold';
+    }
+
     .col-6 {
         padding: 0;
         margin: 0;

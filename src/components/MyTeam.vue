@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="myteam">
         <header>
             <section>
                 <svg id="back_btn_home" xmlns="http://www.w3.org/2000/svg" width="15.516" height="15.058" viewBox="0 0 15.516 15.058" v-on:click="goBack">
